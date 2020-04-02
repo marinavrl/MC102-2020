@@ -1,6 +1,11 @@
 # Algoritmo para lavar as mãos
-1) Pegue o pote de sabão líquido com uma das mãos.
-2) Com a mesma mão, deposite um pouco de sabão líquido na palma da outra mão.
+1) Pegue o sabão em barra ou o pote de sabão líquido com uma das mãos.
+2) Com a mesma mão:
+    2.1) Se estiver usando o sabão líquido:
+        2.1.1) Deposite um pouco de sabão líquido na palma da outra mão.
+    2.2) Se estiver usando o sabão em barra:
+        2.2.1) Molhe a outra mão com água corrente.
+        2.2.2) Esfregue o sabão entre as duas mãos até fazer espuma.
 3) Com as mãos espalmadas, esfregue a palma de uma mão na palma da outra mão.
 4) Esfregue a palma da mão direita do dorso até os dedos da mão esquerda.
 5) Esfregue a palma da mão esquerda do dorso até os dedos da mão direita.
