@@ -7,12 +7,21 @@ b = float(b)
 c = float(c)
 
 # termine esse programa aqui...
-if c**2 + b**2 == a**2 and a != 0 and b != 0 and c != 0:
+if b > a and b > c:
+    a, b = b, a
+if c > a and c > a:
+    a, c = c, a
+
+pitagoras = c**2 + b**2 == a**2
+cosseno1 = c**2 + b**2 < a**2
+
+if pitagoras and a != 0 and b != 0 and c != 0:
     print("retângulo")
-elif c**2 + b**2 < a**2 and (c**2 + b**2 - a**2)/2*b*c > -1 and (c**2 + b**2 - a**2)/2*b*c < 0 and a != 0 and b != 0 and c != 0:
+elif a < b + c and cosseno1 and a != 0 and b != 0 and c != 0:
     print("obtusângulo")
-elif c**2 + b**2 > a**2 and (c**2 + b**2 - a**2)/2*b*c > 0 and (c**2 + b**2 - a**2)/2*b*c < 1 or c == b == a != 0:
+elif a < b + c and a != 0 and b != 0 and c != 0:
     print("acutângulo")
 else:
     print("não forma triângulo")
+
 
