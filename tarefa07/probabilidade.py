@@ -22,28 +22,29 @@ def organizar(L):
             i = 0
     return lista,freq
 
-def ordem_crescente(lista, freq):
-    for c in range(len(lista) - 1):
-        if freq[c] > freq[c + 1]:
-            k = freq[c + 1]
-            freq[c + 1] = freq[c]
-            freq[c] = k
-            k0 = lista[c + 1]
-            lista[c + 1] = lista[c]
-            lista[c] = k0
-        elif freq[c] == freq[c + 1]:
-            if lista[c] > lista[c + 1]:
+def ordem_crescente(lista, freq):    
+    for _ in range(len(lista) - 1):
+        for c in range(len(lista) - 1):
+            if freq[c] > freq[c + 1]:
+                k = freq[c + 1]
+                freq[c + 1] = freq[c]
+                freq[c] = k
                 k0 = lista[c + 1]
                 lista[c + 1] = lista[c]
                 lista[c] = k0
+            elif freq[c] == freq[c + 1]:
+                if lista[c] > lista[c + 1]:
+                    k0 = lista[c + 1]
+                    lista[c + 1] = lista[c]
+                    lista[c] = k0
     return lista                     
 
 def main():
     L = input().split()
     bubble_sort(L)
-    organizar(L)
+    lista, freq = organizar(L)
     ordem_crescente(lista, freq)
-    print(lista)
+    print(' '.join(lista))
 
 main()
 
