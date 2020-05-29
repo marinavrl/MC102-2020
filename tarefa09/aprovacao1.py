@@ -11,13 +11,10 @@ Caso contrario, x alunx eh reprovadx.
 Le a frequencia. Se, do total, 75% ou mais for 'presente', x alunx eh aprovadx. Caso contrario,
 o aluno eh reprovadx."""
 def ler_notas():
-    #Devolve uma lista com o nome das tarefas e o conceito recebidos do teclado
-    #Digite o nome das tarefas e suas respectivas notas, assim: 'tarefa0 A tarefa1 C'
     notas_tarefas = input().split()
-    return notas_tarefas#OK!
+    return notas_tarefas
 
-def verificar_notas(notas_tarefas):#Recebe uma lista com o nome das tarefas e o conceito, nessa ordem, e verifica se ha alguma nota D.
-    #Se houver, reprovadx, caso contrario, continua
+def verificar_notas(notas_tarefas):
     D = 'D'
     k = 0
     for nota in notas_tarefas:
@@ -28,12 +25,11 @@ def verificar_notas(notas_tarefas):#Recebe uma lista com o nome das tarefas e o 
     if k >= 1:
         print("Reprovadx")
     else:
-        freq = listar_frequencia()#OK!
-        i = contar_frequencia(freq)#OK!
-        verificar_faltou(i, freq)#OK!
+        freq = listar_frequencia()
+        i = contar_frequencia(freq)
+        verificar_faltou(i, freq)
 
 def listar_frequencia():
-    #Digite as presencas em cada aula e, ao terminar, pressione Control + D
     freq = []
     while True:
         try:
@@ -41,25 +37,22 @@ def listar_frequencia():
             freq.append(lido)
         except EOFError:
             break
-    return freq#OK!
+    return freq
 
 def contar_frequencia(freq):
-    """So eh executada se o aluno obtiver todas as notas acima de D. Recebe a lista de frequencias, 
-    na quantidade que o usuario quiser. Conta a quantidade de 'faltou'."""
     i = 0
     for _ in freq:
         for p in freq:
             if p == 'faltou':
                 i += 1
         break
-    return i #OK!
+    return i
 
 def verificar_faltou(i, freq):
-    """Verifica se i >25% do total de elementos de freq, alunx reprovadx. Caso contrario, alunx aprovadx."""
     if i > 0.25 * len(freq):
         print("Reprovadx")
     else:
-        print("Aprovadx")#OK!
+        print("Aprovadx")
 
 def main():
     notas_tarefas = ler_notas()
