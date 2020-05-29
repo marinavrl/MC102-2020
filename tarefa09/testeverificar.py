@@ -1,4 +1,4 @@
-def verificar_notas(notas_tarefas):#mudar pra True e False
+def verificar_notas_reprovado(notas_tarefas):#mudar pra True e False
     k = 0
     for nota in notas_tarefas:
         if nota == 'D':
@@ -6,12 +6,13 @@ def verificar_notas(notas_tarefas):#mudar pra True e False
         else:
             k += 0
     if k >= 1: #nem todo if precisa de else
-        print("Reprovadx")
+        return True
     else:
-        print("Aprovado")
+        return False
 
 def main():
     notas_tarefas = ['tarefa0', 'A', 'tarefa1', 'B', 'tarefa2', 'C', 'tarefa3', 'D']
-    verificar_notas(notas_tarefas)
+    if verificar_notas_reprovado(notas_tarefas):
+        print("Reprovadx")
 
 main()
