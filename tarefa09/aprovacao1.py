@@ -41,11 +41,9 @@ def listar_frequencia():
 
 def contar_frequencia(freq):
     i = 0
-    for _ in freq:
-        for p in freq:
-            if p == 'faltou':
-                i += 1
-        break
+    for p in freq:
+        if p == 'faltou':
+            i += 1
     return i
 
 def verificar_faltou(i, freq):
