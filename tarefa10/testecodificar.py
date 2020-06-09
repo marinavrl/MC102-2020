@@ -1,35 +1,53 @@
-def codificar(imagem):#comecar com a matriz para run-length
-    """le uma matriz de 0 e 1 e codifica para run-lenght"""
+def codificar(imagem):
+    """le uma matriz de 0 e 1 e codifica para run-length"""
     codificacao = []
-    tipo_arquivo = 'P1C'
-    codificacao.append(tipo_arquivo)
-    altura = 0
-    largura = 0
-    L0 = []
-    L = []
-    for l in imagem:
-        altura += 1
-    for a in l:
-        largura += 1
-    L0.append(largura)
-    L0.append(altura)
-    codificacao.append(L0)#ate aqui ok!
-    k = 0
-    for _ in imagem:#vercomo professor fez na aula
-        for b in imagem[]:
-            if a in imagem[]
+    m = len(imagem)
+    n = len(imagem[0])
+    a = 0
+    b = 0
+    c = 0
+    d = 0
+    for i in range(m):
+        if i % 2 != 0:
+            continue
+        else:
+            for j in range(n):
+                if imagem[i][j] == '0' and imagem[i + 1][j] == '0':
+                    a += 1
+                elif imagem[i][j] == '0' and imagem[i + 1][j] == '1':
+                    b += 1
+                elif imagem[i][j] == '1' and imagem[i + 1][j] == '0':
+                    c += 1
+                elif imagem[i][j] == '1' and imagem[i + 1][j] == '1':
+                    d += 1
+    if a != 0:
+        codificacao.append(str(a))
+        codificacao.append('00')
+    if b != 0:
+        codificacao.append(str(b))
+        codificacao.append('01')
+    if c != 0:
+        codificacao.append(str(c))
+        codificacao.append('10')
+    if d != 0:
+        codificacao.append(str(d))
+        codificacao.append('11')
     return codificacao
 
 def main():
     imagem = [
-        ['0', '0', '0', '0', '0', '0', '0', '0'],
-        ['1', '1', '1', '1', '0', '0', '0', '0'],
-        ['1', '1', '1', '1', '1', '1', '1', '1'],
-        ['1', '1', '1', '1', '1', '1', '1', '1'],
-        ['1', '1', '1', '1', '1', '1', '1', '1'],
-        ['1', '1', '1', '1', '1', '1', '1', '1'],
+        ['0', '0', '0', '0', '1', '0'],
+        ['0', '0', '0', '0', '1', '0'],
+        ['0', '0', '0', '0', '1', '0'],
+        ['0', '0', '0', '0', '1', '0'],
+        ['0', '0', '0', '0', '1', '0'],
+        ['0', '0', '0', '0', '1', '0'],
+        ['1', '0', '0', '0', '1', '0'],
+        ['0', '1', '1', '1', '0', '0'],
+        ['0', '0', '0', '0', '0', '0'],
+        ['0', '0', '0', '0', '0', '0'],
     ]
     codificacao = codificar(imagem)
-    print(codificacao)
+    print(' '.join(codificacao))
 
 main()
