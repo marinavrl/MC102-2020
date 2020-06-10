@@ -1,17 +1,17 @@
-def codificar(imagem):
+def codificar(largura, altura,imagem):
     """le uma matriz de 0 e 1 e codifica para run-length"""
     codificacao = []
-    m = len(imagem)
-    n = len(imagem[0])
+    codificacao.append(largura)
+    codificacao.append(altura)
     a = 0
     b = 0
     c = 0
     d = 0
-    for i in range(m):
+    for i in range(len(imagem)):
         if i % 2 != 0:
             continue
         else:
-            for j in range(n):
+            for j in range(len(imagem[0])):
                 if imagem[i][j] == '0' and imagem[i + 1][j] == '0': # ver se mudando tudo ra if faz sentido
                     a += 1
                 elif imagem[i][j] == '0' and imagem[i + 1][j] == '1':
@@ -20,11 +20,11 @@ def codificar(imagem):
                     c += 1
                 elif imagem[i][j] == '1' and imagem[i + 1][j] == '1':
                     d += 1
-    for i in range(m):
+    for i in range(len(imagem)):
         if i % 2 != 0:
             continue
         else:
-            for j in range(n):
+            for j in range(len(imagem[0])):
                 if imagem[i][j] == '0' and imagem[i + 1][j] == '0' and a != 0:
                     if str(a) and '00' not in codificacao:
                         codificacao.append(str(a))
@@ -56,7 +56,9 @@ def main():
         ['0', '0', '0', '0', '0', '0'],
         ['0', '0', '0', '0', '0', '0'],
     ]
-    codificacao = codificar(imagem)
+    largura = str(len(imagem[0]))
+    altura = str(len(imagem))
+    codificacao = codificar(largura, altura, imagem)
     print(' '.join(codificacao))
 
 main()

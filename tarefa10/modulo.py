@@ -1,5 +1,4 @@
-def codificar(imagem):
-"""le uma matriz de 0 e 1 e codifica para run-length"""
+def codificar(largura,altura,imagem):
     codificacao = []
     m = len(imagem)
     n = len(imagem[0])
