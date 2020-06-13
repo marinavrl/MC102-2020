@@ -1,4 +1,4 @@
-def codificar(largura,altura,imagem):
+def codificar(largura, altura,imagem):
     codificacao = []
     codificacao.append('P1C')
     codificacao.append(largura)
@@ -80,33 +80,24 @@ def codificar(largura,altura,imagem):
                         codificacao.append(str(d))
                         codificacao.append('11')
     return codificacao
+    
+def main():
+    imagem = [
+        ['0', '0', '0', '0', '1', '0'],
+        ['0', '0', '0', '0', '1', '0'],
+        ['0', '0', '0', '0', '1', '0'],
+        ['0', '0', '0', '0', '1', '0'],
+        ['0', '0', '0', '0', '1', '0'],
+        ['0', '0', '0', '0', '1', '0'],
+        ['1', '0', '0', '0', '1', '0'],
+        ['0', '1', '1', '1', '0', '0'],
+        ['0', '0', '0', '0', '0', '0'],
+        ['0', '0', '0', '0', '0', '0'],
+    ]
+    largura = str(len(imagem[0]))
+    altura = str(len(imagem))
+    codificacao = codificar(largura, altura, imagem)
+    print(' '.join(codificacao))
 
-def decodificar(largura, altura, codificacao):
-
-    return imagem
-
-
-def carregar_imagem_codificada(nome_do_arquivo):#o objetivo da tarefa eh completar
-    #olhando os casos de teste voce vai entender o que tem que fazer usando open etc
-    #ASSISTE A AULA DE ARQUIVOS!!!!
-    #o teste da ferramenta online funciona!!! olhar no site
-    return largura, altura, codificacao
-
-
-def carregar_imagem_decodificada(nome_do_arquivo):
-    """Essa função recebe o nome de um arquivo de imagem no formato PBM (veja os exemplos de arquivos .pbm fornecidos em algum editor de texto) e devolver as informações:
-dois inteiros: largura e altura da imagem
-uma matriz de inteiros 0 ou 1: que correspondem ao pixels da imagem
-
-A primeira coisa que vc tem que fazer é entender o que cada função deve fazer."""
-#a maior duvida eh a ordem dos bits e se os padroes se repetem, como fazer com que faca sentido
-#olhar os casos de teste nos "testes"
-    return largura, altura, imagem
-
-
-def escrever_imagem_codificada(largura, altura, codificacao, nome_do_arquivo):
-    pass
-
-
-def escrever_imagem_decodificada(largura, altura, imagem, nome_do_arquivo):
-    pass
+main()
+#DEUCERTOOOOO 
