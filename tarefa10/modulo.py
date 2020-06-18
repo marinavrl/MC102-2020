@@ -82,7 +82,36 @@ def codificar(largura,altura,imagem):
     return codificacao
 
 def decodificar(largura, altura, codificacao):
-
+    imagem = []
+    m = int(altura)
+    n = int(largura)
+    for _ in range(m):
+        l = []
+        imagem.append(l)
+    for i in range(len(imagem)):
+        for k in range(3, len(codificacao)):
+            if i % 2 == 0:
+                a = codificacao[k]
+                if a != '00' and a != '01' and a != '10' and a != '11':
+                    a = int(a)
+                    for _ in range(a):
+                        if len(imagem[i]) < n:
+                            imagem[i].append(codificacao[k + 1][0])
+                            imagem[i + 1].append(codificacao[k + 1][1])
+                        elif len(imagem[i]) == n:
+                            if i != len(imagem) - 2:
+                                i += 2
+                                if len(imagem[i]) < n:
+                                    imagem[i].append(codificacao[k + 1][0])
+                                    imagem[i + 1].append(codificacao[k + 1][1])
+                                elif len(imagem[i]) == n:
+                                    if i != len(imagem) - 2:
+                                        i += 2
+                                        continue
+                                    else:
+                                        if len(imagem[i]) < n:
+                                            imagem[i].append(codificacao[k + 1][0])
+                                            imagem[i + 1].append(codificacao[k + 1][1])
     return imagem
 
 
