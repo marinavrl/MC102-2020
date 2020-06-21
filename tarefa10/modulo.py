@@ -115,21 +115,25 @@ def decodificar(largura, altura, codificacao):
     return imagem
 
 
-def carregar_imagem_codificada(nome_do_arquivo):#o objetivo da tarefa eh completar
+def carregar_imagem_codificada(nome_do_arquivo):#c_i_m
     #olhando os casos de teste voce vai entender o que tem que fazer usando open etc
-    #ASSISTE A AULA DE ARQUIVOS!!!!
-    #o teste da ferramenta online funciona!!! olhar no site
+    """Ler um arquivo de texto e carregar os dados nas variáveis. Olhar o exemplo de código fornecido 
+    que tem os parâmetros e a saída e completar as funções. Por exemplo, 
+
+    def carregar_imagem_decodificada(nome_do_arquivo):
+    return largura, altura, imagem
+
+    Essa função recebe o nome de um arquivo de imagem no formato PBM (veja os exemplos de arquivos.pbm 
+    fornecidos em algum editor de texto) e devolver as informações:
+    dois inteiros: largura e altura da imagem
+    uma matriz de inteiros 0 ou 1: que correspondem ao pixels da imagem"""
     return largura, altura, codificacao
 
 
 def carregar_imagem_decodificada(nome_do_arquivo):
     """Essa função recebe o nome de um arquivo de imagem no formato PBM (veja os exemplos de arquivos .pbm fornecidos em algum editor de texto) e devolver as informações:
 dois inteiros: largura e altura da imagem
-uma matriz de inteiros 0 ou 1: que correspondem ao pixels da imagem
-
-A primeira coisa que vc tem que fazer é entender o que cada função deve fazer."""
-#a maior duvida eh a ordem dos bits e se os padroes se repetem, como fazer com que faca sentido
-#olhar os casos de teste nos "testes"
+uma matriz de inteiros 0 ou 1: que correspondem ao pixels da imagem."""
     return largura, altura, imagem
 
 
