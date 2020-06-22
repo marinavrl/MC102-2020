@@ -135,6 +135,8 @@ def carregar_imagem_codificada(nome_do_arquivo):
                 altura += L[1][j]
                 if j == len(L[1]) - 1:
                     break #largura e altura deu certo
+    largura = int(largura)
+    altura = int(altura)
     codificacao = []
     codificacao.append(L[2].strip())
     return largura, altura, codificacao
@@ -157,8 +159,23 @@ uma matriz de inteiros 0 ou 1: que correspondem ao pixels da imagem."""
 
 
 def escrever_imagem_codificada(largura, altura, codificacao, nome_do_arquivo):
-    pass
-
+    """cria um arquivo chamado nome_do_arquivo
+    escreve dos dados do arquivo por linhas
+    tipo
+    largura altura
+    codificacao"""
+    with open(nome_do_arquivo, "w") as arquivo:
+        arquivo.write('P1C')
+        arquivo.write(f'{largura} {altura}')
+        for a in codificacao:
+            a = str(a)
+            arquivo.write(a)
 
 def escrever_imagem_decodificada(largura, altura, imagem, nome_do_arquivo):
-    pass
+    with open(nome_do_arquivo, "w") as arquivo:
+        arquivo.write('P1')
+        arquivo.write(f'{largura} {altura}')
+        for linha0 in imagem:
+            linha0 = linha0.strip()
+            linha = linha0 + "\n"
+            arquivo.write(linha)

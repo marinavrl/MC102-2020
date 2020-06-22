@@ -19,6 +19,8 @@ def testar_c_i_c(nome_do_arquivo):
                 altura += L[1][j]
                 if j == len(L[1]) - 1:
                     break #largura e altura deu certo
+    largura = int(largura)
+    altura = int(altura)
     codificacao = []
     codificacao.append(L[2].strip())
     return largura, altura, codificacao
