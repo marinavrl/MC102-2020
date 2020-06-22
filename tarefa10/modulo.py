@@ -1,8 +1,5 @@
 def codificar(largura,altura,imagem):
     codificacao = []
-    codificacao.append('P1C')
-    codificacao.append(largura)
-    codificacao.append(altura)
     a = 0
     b = 0
     c = 0
@@ -165,16 +162,16 @@ def escrever_imagem_codificada(largura, altura, codificacao, nome_do_arquivo):
     largura altura
     codificacao"""
     with open(nome_do_arquivo, "w") as arquivo:
-        arquivo.write('P1C')
-        arquivo.write(f'{largura} {altura}')
+        arquivo.write('P1C\n')
+        arquivo.write(f'{largura} {altura}\n')
         for a in codificacao:
             a = str(a)
-            arquivo.write(a)
+            arquivo.write(f'{a} ')
 
 def escrever_imagem_decodificada(largura, altura, imagem, nome_do_arquivo):
     with open(nome_do_arquivo, "w") as arquivo:
-        arquivo.write('P1')
-        arquivo.write(f'{largura} {altura}')
+        arquivo.write('P1\n')
+        arquivo.write(f'{largura} {altura}\n')
         for linha0 in imagem:
             linha0 = linha0.strip()
             linha = linha0 + "\n"
