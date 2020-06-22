@@ -114,27 +114,45 @@ def decodificar(largura, altura, codificacao):
                                             imagem[i + 1].append(codificacao[k + 1][1])
     return imagem
 
-
-
-def carregar_imagem_codificada(nome_do_arquivo):#c_i_m
-    #olhando os casos de teste voce vai entender o que tem que fazer usando open etc
-    """Ler um arquivo de texto e carregar os dados nas variáveis. Olhar o exemplo de código fornecido 
-    que tem os parâmetros e a saída e completar as funções. Por exemplo, 
-
-    def carregar_imagem_decodificada(nome_do_arquivo):
-    return largura, altura, imagem
-
-    Essa função recebe o nome de um arquivo de imagem no formato PBM (veja os exemplos de arquivos.pbm 
-    fornecidos em algum editor de texto) e devolver as informações:
-    dois inteiros: largura e altura da imagem
-    uma matriz de inteiros 0 ou 1: que correspondem ao pixels da imagem"""
+def carregar_imagem_codificada(nome_do_arquivo):
+    """recebe  o arquivo no formato P1C"""
+    with open(nome_do_arquivo) as arquivo: #percorre as linhas do arquivo como se elas fossem strings numa lista
+        L = []
+        for line in arquivo:
+            Ls = line.strip()
+            L.append(Ls)
+    largura = L[1][0]
+    altura = ' '
+    for i in range(1, len(L[1])): 
+        if L[1][i] != ' ':
+            largura += L[1][i]
+        else:
+            break
+    for j in range(1, len(L[1])):
+        if L[1][j] == ' ':
+            j += 1
+            if L[1][j] != ' ':
+                altura += L[1][j]
+                if j == len(L[1]) - 1:
+                    break #largura e altura deu certo
+    codificacao = []
+    codificacao.append(L[2].strip())
     return largura, altura, codificacao
-
 
 def carregar_imagem_decodificada(nome_do_arquivo):
     """Essa função recebe o nome de um arquivo de imagem no formato PBM (veja os exemplos de arquivos .pbm fornecidos em algum editor de texto) e devolver as informações:
 dois inteiros: largura e altura da imagem
 uma matriz de inteiros 0 ou 1: que correspondem ao pixels da imagem."""
+    with open(nome_do_arquivo) as arquivo: #percorre as linhas do arquivo como se elas fossem strings numa lista
+        L = []
+        for line in arquivo:
+            Ls = line.strip()
+            L.append(Ls)
+    imagem = []
+    for i in range(2, len(L)):
+        imagem.append(list(L[i].strip())) #devolve a matriz com os zeros e uns separados
+    largura = len(imagem[0])
+    altura = len(imagem)
     return largura, altura, imagem
 
 

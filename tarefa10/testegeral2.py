@@ -1,11 +1,12 @@
-codificacao = ['8', '6', '4', '01', '4', '00', '16', '11'] #exemplo de codificacao resultante da funcao codificar
-imagem = [
-    ['0', '0', '0', '0', '0', '0', '0', '0'],
-    ['1', '1', '1', '1', '0', '0', '0', '0'],
-    ['1', '1', '1', '1', '1', '1', '1', '1'],
-    ['1', '1', '1', '1', '1', '1', '1', '1'],
-    ['1', '1', '1', '1', '1', '1', '1', '1'],
-    ['1', '1', '1', '1', '1', '1', '1', '1'],
-]
-largura == 8
-altura == 6
+def matriz_imagem(L):
+    imagem = []
+    for i in range(2, len(L)):
+        imagem.append(list(L[i].strip()))
+    return imagem
+
+def main():
+    L = ['P1', '6 10', '000010', '000010', '000010', '000010', '000010', '000010', '100010', '011100', '000000', '000000']
+    imagem = matriz_imagem(L)
+    print(imagem)
+
+main()    
