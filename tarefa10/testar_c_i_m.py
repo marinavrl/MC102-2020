@@ -22,10 +22,10 @@ def carregar_imagem_codificada(nome_do_arquivo):
         for line in arquivo:
             Ls = line.strip()
             L.append(Ls)
-    return L       # a duvida eh como acessar os arquivos de teste
+      # a duvida eh como acessar os arquivos de teste
 
 def main():
-    L = carregar_imagem_codificada("jota.pbm") #nao da pra testar com os arquivos
+    L = carregar_imagem_codificada(nome_do_arquivo) #nao da pra testar com os arquivos
     print(L)
 
 main()
