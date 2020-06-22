@@ -115,6 +115,7 @@ def decodificar(largura, altura, codificacao):
     return imagem
 
 
+
 def carregar_imagem_codificada(nome_do_arquivo):#c_i_m
     #olhando os casos de teste voce vai entender o que tem que fazer usando open etc
     """Ler um arquivo de texto e carregar os dados nas variáveis. Olhar o exemplo de código fornecido 
