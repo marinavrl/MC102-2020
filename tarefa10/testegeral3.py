@@ -22,11 +22,14 @@ def testar_c_i_c(nome_do_arquivo):
     largura = int(largura)
     altura = int(altura)
     codificacao = []
+    codificacao.append("P1C")
+    codificacao.append(str(largura))
+    codificacao.append(str(altura))
     codificacao.append(L[2].strip())
     return largura, altura, codificacao
 
 def main():
-    largura, altura, codificacao = testar_c_i_c("testes/feep.p1c") #codificacao depois
+    largura, altura, codificacao = testar_c_i_c("testes/toy.p1c") #codificacao depois
     print(f'{largura} and {altura} and {codificacao}')
 
 main()

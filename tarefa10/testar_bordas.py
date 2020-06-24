@@ -1,6 +1,7 @@
 from bordas import destacar_bordas
 
 
+
 def testar_bordas():
     # crie um exemplo de imagem pequena para testar
     largura = ...

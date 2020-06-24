@@ -1,8 +1,14 @@
-from modulo import *
-
-
+from modulo import * #pega todas as funcoes do modulo
+# conectar a carregar_imagem_codificada com a decodificar
+""" 1) Carregar a imagem codificada.. ok
+    2) Decodificar para a matriz...ok
+    3) ... mexer para destacar as bordas
+    4) verificar se codificar faz sentido pra saida
+    ...
+    """
 def destacar_bordas(largura, altura, imagem):
-    pass
+    """imagem eh matriz de bits
+    largura e altura delimitam"""
 
 
 def main():
