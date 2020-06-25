@@ -7,10 +7,41 @@ from modulo import * #pega todas as funcoes do modulo
     ...
     """
 def destacar_bordas(largura, altura, imagem):
-    """imagem eh matriz de bits
-    largura e altura delimitam"""
-
-
+    """ 1) Adicionar altura listas vazias a  nova_imagem
+        2)ver largura e adicionar  largura '0's em cada lista da nova_imagem
+        3) percorrer cada item de imagem
+        4) adicionar ao item correspondente em nova_imagem se for igual a zero e se estiver na ultima linha
+        da matriz e se for o primeiro ou ultimo bit de cada linha 
+        caso contrario, adicionar zero     """
+    nova_imagem = []
+    for m in range(altura):
+        l = []
+        nova_imagem.append(l)
+        for n in range(largura):
+            nova_imagem[m].append('0')
+    for i in range(len(imagem)):
+        for j in range(len(imagem[0])):
+            if imagem[i][j] == '0':
+                nova_imagem[i][j] = '0'
+            elif imagem[i][j] == '1' and imagem[i-1][j] == '0':
+                nova_imagem[i][j] = '1'
+            elif imagem[i][j] == '1' and j == 0:
+                nova_imagem[i][j] = '1'
+            elif imagem[i][j] == '1' and imagem[i+1][j] == '0':
+                nova_imagem[i][j] = '1'
+            elif imagem[i][j] == '1' and j == len(imagem[0])-1:
+                nova_imagem[i][j] = '1'
+            elif imagem[i][j] == '1' and imagem[i-1][j-1] == '0':
+                nova_imagem[i][j] == '1'
+            elif imagem[i][j] == '1' and imagem[i-1][j+1] == '0':
+                nova_imagem[i][j] == '1'
+            elif imagem[i][j] == '1' and imagem[i+1][j-1] == '0':
+                nova_imagem[i][j] == '1'
+            elif imagem[i][j] == '1' and imagem[i+1][j+1] == '0':
+                nova_imagem[i][j] == '1'
+            elif imagem[i][j] == '1' and imagem[i-1][j-1] == '1' and imagem[i-1][j] == '1' and imagem[i-1][j+1] == '1' and imagem[i][j-1] == '1' and imagem[i][j+1] == '1' and imagem[i+1][j-1] == '1' and imagem[i+1][j] == '1' and imagem[i+1][j+1] == '1':
+                nova_imagem[i][j] == '0'
+    return nova_imagem
 def main():
 
     arquivo_entrada = input()
