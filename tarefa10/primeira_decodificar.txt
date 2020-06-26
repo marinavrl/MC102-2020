@@ -5,7 +5,7 @@ imagem = []
         l = []
         imagem.append(l)
     for i in range(len(imagem)):
-        for k in range(3, len(codificacao)):
+        for k in range(len(codificacao)):
             if i % 2 == 0:
                 a = codificacao[k]
                 if a != '00' and a != '01' and a != '10' and a != '11':

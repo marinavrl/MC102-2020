@@ -14,7 +14,7 @@ def carregar_imagem_decodificada(nome_do_arquivo): # le do formato p1c
  
 
 def main():
-    largura, altura, imagem = carregar_imagem_decodificada("testes/jota.pbm")
+    largura, altura, imagem = carregar_imagem_decodificada("testes/feep.pbm")
     print(f'{largura} {altura} {imagem}')
 
 main()

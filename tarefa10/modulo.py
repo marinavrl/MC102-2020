@@ -1,4 +1,4 @@
-def codificar(largura,altura,imagem):
+def codificar(largura,altura,imagem):#problema feep
     codificacao = []
     a = 0
     b = 0
@@ -86,62 +86,46 @@ def decodificar(largura, altura, codificacao):
         l = []
         imagem.append(l)
     for i in range(len(imagem)):
-        for k in range(len(codificacao[3])):#mudou de 3, len(codificacao) para len(codificacao[3])
+        for k in range(len(codificacao)):
             if i % 2 == 0:
-                a = codificacao[3][k]
-                if a != ' ':
-                    if a != '00' and a != '01' and a != '10' and a != '11':
-                        a = int(a)
-                        for _ in range(a):
-                            if len(imagem[i]) < n and codificacao[3][k + 2] != ' ' and codificacao[3][k + 3]  != ' ':
-                                imagem[i].append(codificacao[3][k + 2])
-                                imagem[i + 1].append(codificacao[3][k + 3])
-                            elif len(imagem[i]) == n:
-                                if i != len(imagem) - 2:
-                                    i += 2
-                                    #repetir os passos
-                                    if len(imagem[i]) < n and codificacao[3][k + 2] != ' ' and codificacao[3][k + 3] != ' ':
-                                        imagem[i].append(codificacao[3][k + 2])
-                                        imagem[i + 1].append(codificacao[3][k + 3])
-                                    elif len(imagem[i]) == n:
-                                        if i != len(imagem) - 2:
-                                            i += 2
-                                            continue
-                                        else:
-                                            if len(imagem[i]) < n:
-                                                imagem[i].append(codificacao[3][k + 2])
-                                                imagem[i + 1].append(codificacao[3][k + 3])                    
-    return imagem     
+                a = codificacao[k]
+                if a != '00' and a != '01' and a != '10' and a != '11':
+                    a = int(a)
+                    for _ in range(a):
+                        if len(imagem[i]) < n:
+                            imagem[i].append(codificacao[k + 1][0])
+                            imagem[i + 1].append(codificacao[k + 1][1])
+                        elif len(imagem[i]) == n:
+                            if i != len(imagem) - 2:
+                                i += 2
+                                if len(imagem[i]) < n:
+                                    imagem[i].append(codificacao[k + 1][0])
+                                    imagem[i + 1].append(codificacao[k + 1][1])
+                                elif len(imagem[i]) == n:
+                                    if i != len(imagem) - 2:
+                                        i += 2
+                                        continue
+                                    else:
+                                        if len(imagem[i]) < n:
+                                            imagem[i].append(codificacao[k + 1][0])
+                                            imagem[i + 1].append(codificacao[k + 1][1])
+    return imagem
 
 def carregar_imagem_codificada(nome_do_arquivo):
     """recebe  o arquivo no formato P1C"""
     with open(nome_do_arquivo) as arquivo: #percorre as linhas do arquivo como se elas fossem strings numa lista
         L = []
         for line in arquivo:
-            Ls = line.strip()
+            Ls = line.strip().split()
             L.append(Ls)
-    largura = L[1][0]
-    altura = ' '
-    for i in range(1, len(L[1])): 
-        if L[1][i] != ' ':
-            largura += L[1][i]
-        else:
-            break
-    for j in range(1, len(L[1])):
-        if L[1][j] == ' ':
-            j += 1
-            if L[1][j] != ' ':
-                altura += L[1][j]
-                if j == len(L[1]) - 1:
-                    break #largura e altura deu certo
+    largura_altura = L[1]
+    largura = largura_altura[0]
+    altura = largura_altura[1]
     largura = int(largura)
     altura = int(altura)
-    codificacao = []
-    codificacao.append("P1C")
-    codificacao.append(str(largura))
-    codificacao.append(str(altura))
-    codificacao.append(L[2].strip())
-    return largura, altura, codificacao 
+    codificacao = L[2]
+    return largura, altura, codificacao
+#mudar decodificar para a o q era antes 
 
 def carregar_imagem_decodificada(nome_do_arquivo):
     """Essa função recebe o nome de um arquivo de imagem no formato PBM (veja os exemplos de arquivos .pbm fornecidos em algum editor de texto) e devolver as informações:
