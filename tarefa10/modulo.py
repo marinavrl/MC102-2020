@@ -1,81 +1,23 @@
-def codificar(largura,altura,imagem):#problema feep
+def codificar(largura,altura,imagem):
+    largura = int(largura)
+    altura = int(altura)
     codificacao = []
-    a = 0
-    b = 0
-    c = 0
-    d = 0
-    for i in range(len(imagem)):
-        if i % 2 != 0:
-            continue
-        else:
-            for j in range(len(imagem[0])):
-                if j != len(imagem[0])-1 and i != len(imagem) - 1:
-                        if imagem[i][j] == '0' and imagem[i + 1][j] == '0':
-                            a += 1
-                            if imagem[i][j + 1] != '0' and imagem[i + 1][j + 1] != '0':
-                                codificacao.append(str(a))
-                                codificacao.append('00')
-                                a = 0
-                        elif imagem[i][j] == '0' and imagem[i + 1][j] == '1':
-                            b += 1
-                            if imagem[i][j + 1] != '0' or imagem[i + 1][j + 1] != '1':
-                                codificacao.append(str(b))
-                                codificacao.append('01')
-                                b = 0
-                        elif imagem[i][j] == '1' and imagem[i + 1][j] == '0':
-                            c += 1
-                            if imagem[i][j + 1] != '1' or imagem[i + 1][j + 1] != '0':
-                                codificacao.append(str(c))
-                                codificacao.append('10')
-                                c = 0
-                        elif imagem[i][j] == '1' and imagem[i + 1][j] == '1':
-                            d += 1
-                            if imagem[i][j + 1] != '1' or imagem[i + 1][j + 1] != '1':
-                                codificacao.append(str(d))
-                                codificacao.append('11')
-                                d = 0
-                elif j == len(imagem[0])-1 and i < len(imagem) - 2:
-                    if imagem[i][j] == '0' and imagem[i + 1][j] == '0':
-                        a += 1
-                        if imagem[i + 2][0] != '0' or imagem[i + 3][0] != '0':
-                            codificacao.append(str(a))
-                            codificacao.append('00')
-                            a = 0
-                    elif imagem[i][j] == '0' and imagem[i + 1][j] == '1':
-                        b += 1
-                        if imagem[i + 2][0] != '0' and imagem[i + 3][0] != '1':
-                            codificacao.append(str(b))
-                            codificacao.append('01')
-                            b = 0
-                    elif imagem[i][j] == '1' and imagem[i + 1][j] == '0':
-                        c += 1
-                        if imagem[i + 2][0] != '1' and imagem[i + 3][0] != '0':
-                            codificacao.append(str(c))
-                            codificacao.append('10')
-                            c = 0
-                    elif imagem[i][j] == '1' and imagem[i + 1][j] == '1':
-                        d += 1
-                        if imagem[i + 2][0] != '1' and imagem[i + 3][0] != '1':
-                            codificacao.append(str(d))
-                            codificacao.append('11')
-                            d = 0
-                else:
-                    if imagem[i][j] == '0' and imagem[i + 1][j] == '0':
-                        a += 1
-                        codificacao.append(str(a))
-                        codificacao.append('00')
-                    elif imagem[i][j] == '0' and imagem[i + 1][j] == '1':
-                        b += 1
-                        codificacao.append(str(b))
-                        codificacao.append('01')
-                    elif imagem[i][j] == '1' and imagem[i + 1][j] == '0':
-                        c += 1
-                        codificacao.append(str(c))
-                        codificacao.append('10')
-                    elif imagem[i][j] == '1' and imagem[i + 1][j] == '1':
-                        d += 1
-                        codificacao.append(str(d))
-                        codificacao.append('11')
+    a = 1 #define antes
+    for i in range(0,altura,2):
+        for j in range(largura):
+            point = True #ajuda a marcar que nao ta repetindo contagem
+            if j < largura - 1:#faz a soma de strings
+                if imagem[i][j] + imagem[i+1][j] == imagem[i][j+1] + imagem[i+1][j+1]:
+                    a+=1
+                    point = False
+            if j == largura - 1 and i+2<altura:
+                if imagem[i][j] + imagem[i+1][j] == imagem[i+2][0] + imagem[i+3][0]:
+                    a+=1
+                    point = False
+            if point or i+j==(altura + largura - 3):
+                codificacao.append(str(a))
+                codificacao.append(imagem[i][j] + imagem[i+1][j])
+                a = 1   #comeca a contar de novo
     return codificacao
 
 def decodificar(largura, altura, codificacao):
@@ -161,7 +103,12 @@ def escrever_imagem_decodificada(largura, altura, imagem, nome_do_arquivo):
     with open(nome_do_arquivo, "w") as arquivo:
         arquivo.write('P1\n')
         arquivo.write(f'{largura} {altura}\n')
-        for linha0 in imagem:
-            linha0 = linha0.strip()
-            linha = linha0 + "\n"
+        linha0 = ''
+        linha = ''
+        for i in range(len(imagem)):      
+            for j in range(len(imagem[0])):
+                linha0 += imagem[i][j]
+            linha = linha0 + '\n'
+            linha0 = '' 
             arquivo.write(linha)
+    #arquivo.write(linha)
