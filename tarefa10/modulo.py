@@ -14,12 +14,11 @@ def codificar(largura,altura,imagem):
                 if imagem[i][j] + imagem[i+1][j] == imagem[i+2][0] + imagem[i+3][0]:
                     a+=1
                     point = 1
-            if point == 0 or i+j==(altura + largura - 3):
+            if point == 0 or i == altura -2 and j == largura - 1:
                 codificacao.append(str(a))
                 codificacao.append(imagem[i][j] + imagem[i+1][j])
-                a = 1   #comeca a contar de novo
+                a = 1 #comeca a contar de novo 
     return codificacao
-
 def decodificar(largura, altura, codificacao):
     imagem = []
     m = int(altura)
