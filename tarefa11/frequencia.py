@@ -23,8 +23,9 @@ def tirar_stopwords(L0, stopwords): # recebe lista de stopwords da entrada, ver 
                     L0.remove(palavra0)
     return L0
     pass
-def contar_frequencia():
-    """ Recebe a lista sem stopwords e ordena da mais para a menos frequente, retornando uma lista organizada"""
+def contar_frequencia(L0):
+    """ Recebe a lista sem stopwords e conta a freq de cada palavra e associa a freq a palavra pelo dict(tupla)"""
+    #tupla = (palavra, frequencia)
     pass
 
 def main():
