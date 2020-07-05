@@ -1,0 +1,22 @@
+def editar_L0(L0):
+    """ tira as coisas que atrapalham a contagem de palavras que se repetem muito(Pontuacoes e aspas) """
+    #percorre a lista
+    #para cada elemento, percorre e ve se a primeira parte ou a ultima ou as duas sao '' e ,se for, tira
+    #para cada elemento, percorre e ve se a ultima parte eh ponto ou virgula, se for tira 
+    for i in range(len(L0)):
+        if L0[i][0:2] == "''" and L0[i][len(L0[i])-2:len(L0[i])] == "''":
+            L0[i] = L0[i][2:len(L0[i])-1]
+        elif L0[i][0:2] == "''":
+            L0[i] = L0[i][2:len(L0[i])]
+        elif L0[i][len(L0[i])-2:len(L0[i])] == "''":
+            L0[i] = L0[i][0:len(L0[i])-2]
+        elif L0[i][len(L0[i])-1] == ',' or L0[i][len(L0[i])-1] == '.':
+            L0[i] = L0[i][0:len(L0[i])-1]
+    return L0
+#ok
+def main(): #botar a lista sem as stop words
+    L0 = ['Dilatação', 'tempo', 'No', 'dia', 'dia', 'corriqueira', 'ideia', 'tempo', 'algo', 'universal;', 'vez', 'sincronizados', 'relógios', 'idênticos,', 'esses', 'irão', 'ser', 'vistos', 'indicando', 'mesma', 'leitura,', 'independentemente', 'posições,', 'movimentos', 'relativos,', 'acelerações,', 'quem', 'esteja', 'observá-los.', 'A', 'mesma', 'ideia', 'atrela-se', 'noção', 'separação', 'espacial', 'pontos.', 'Espaço', 'tempo', 'são,', 'dia-a-dia', 'âmbito', 'mecânica', 'newtoniana,', 'entendidos', 'universais', 'absolutos;', 'restando', 'velocidade', 'serem', 'relativa', 'referenciais.', 'Tal', 'paradigma,', 'compatível', 'maioria', 'eventos', 'encontrados', 'cotidiano,', 'perdurou', 'dentro', 'ciência', 'até', 'início', 'século', 'XX,', 'quando', 'teoria', 'relatividade', 'veio', 'tona,', 'mostrando', 'realidade', 'natural', 'é,', 'contudo,', 'bem', 'sutil', 'pensava', 'até', 'então.', 'No', 'paradigma,', 'limite', 'relativístico,', 'inferência', 'tempo', 'deixa', 'ser', 'absoluta', 'passa', 'ser', 'algo', 'local,', 'atrelada', 'referencial', 'particular;', 'referenciais', 'movimento', 'relativo', 'sob', 'acelerações', 'distintas', 'geralmente', 'concordam', 'medidas', 'tempo', 'intervalos', 'tempo.', 'A', 'noção', 'simultaneidade', 'absoluta', 'também', 'cai', 'terra,', 'referenciais', 'diferentes', 'geralmente', 'concordarão', 'simultaneidade', 'eventos,', 'algum', 'referencial', 'eles', 'sejam', 'vistos', 'forma', 'simultânea.', 'Dilatação', 'tempo', 'designa,', 'âmbito', 'mecânica', 'einsteiniana,', 'outros', 'fenômeno', 'observador', 'percebe,', 'virtude', 'movimento', 'relativo', 'acelerado', 'referenciais,', 'relógio', 'observador', 'encontra-se', 'afastar-se,', 'fisicamente', 'idêntico', 'próprio', 'relógio,', 'está', "''andar''", 'devagar', 'tempo', 'observador', 'infere,', 'caso', 'devagar', 'tempo', 'próprio.', 'A', 'percepção', 'primeiro', 'observador', 'tempo', "''anda", "devagar''", 'relógio', 'móvel,', 'mas', 'isso', 'somente', 'verdade', 'contexto', 'referencial', 'observador', 'estático.', 'Em', 'ausência', 'aceleração,', 'princípio', 'paradoxalmente,', 'observador', 'também', 'verá', 'relógio', 'anexado', 'primeiro', 'referencial', "''andar''", 'devagar', 'próprio', 'relógio.', 'Localmente,', 'i.e.,', 'perspectiva', 'qualquer', 'observador', 'estático', 'junto', 'qualquer', 'referenciais,', 'relógios,', 'sincronizados', 'mantidos', 'juntos', 'atrasarão', 'adiantarão', 'relação', 'outro.', 'Ao', 'passo', 'relatividade', 'restrita', 'dilatação', 'tempo', 'simétrica', 'relação', 'referenciais,', 'seja,', 'qualquer', 'observador', 'relógio', 'móvel', 'atrasa-se', 'relação', 'carrega', 'consigo,', 'contexto', 'relatividade', 'geral,', 'estende-se', 'referenciais', '(covariância', 'geral),', 'dilatação', 'temporal', 'devida', 'acelerações', 'simétrica,', 'nesse', 'caso', 'ambos', 'observadores', 'concordarão', 'relógios', 'adianta', 'atrasa,', 'outro.', 'Considerando', 'novamente', 'relatividade', 'restrita,', 'intervalo', 'tempo', 'eventos', 'quaisquer', 'menor', 'possível', 'quando', 'medido', 'observador', 'detém', 'relógio,', 'sendo', 'este', 'conhecido', 'tempo', 'próprio', 'deste', 'observador.', 'Qualquer', 'observador', 'movimento', 'relativo', 'medirá', 'intervalo', 'tempo', 'maior', 'mesmos', 'eventos', 'considerados,', 'sendo', 'expressão', "''dilatação", "tempo''", 'bem', 'sugestiva,', 'portanto.']
+    L0 = editar_L0(L0)
+    print(L0)
+
+main()
