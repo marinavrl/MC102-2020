@@ -22,11 +22,30 @@ def tirar_stopwords(L0, stopwords): # recebe lista de stopwords da entrada, ver 
                 if palavra0 == palavra1:
                     L0.remove(palavra0)
     return L0
+
+def editar_L0():
+    """ tira as coisas que atrapalham a contagem de palavras que se repetem muito(Pontuacoes e aspas) """
     pass
 def contar_frequencia(L0):
-    """ Recebe a lista sem stopwords e conta a freq de cada palavra e associa a freq a palavra pelo dict(tupla)"""
+    """ Recebe a lista sem stopwords e conta a freq de cada palavra e associa a freq a palavra pelas tuplas"""
     #tupla = (palavra, frequencia)
-    pass
+    palavras_freq = []
+    for i in range(len(L0)):
+        a = 0
+        for j in range(len(L0)):
+            if L0[i] == L0[j]:
+                a+=1
+                palavra = L0[i]
+            else:
+                continue
+        freq = a
+        tupla = (palavra, freq)
+        if tupla in palavras_freq:
+            continue
+        else:
+            palavras_freq.append(tupla)
+    return palavras_freq 
+#esta contando corretamente
 
 def main():
     texto = input() #recebe o nome do arquivo
