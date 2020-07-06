@@ -68,16 +68,46 @@ def ordenar_freq_decresc(palavras_freq):
     return palavras_freq
 #ordena ok
 
+def quartil_lista(palavras_freq):
+    """ Todas as palavras que tem freq maior ou igual a cinco e organiza em ordem decrescente,
+     depois pega o primeiro quarto de palavras, o quartil vai ser a ultima desse quarto"""
+    lista = []
+    for i in range(len(palavras_freq)):
+        if palavras_freq[i][1] >= 5:
+            lista.append(palavras_freq[i][0])
+    return lista
+
+def quartil_palavras(lista):
+    quarto = []
+    a = 0
+    for i in range(len(lista)//4):
+        quarto.append(lista[i])
+        a+=1
+    return quarto, a
+
+def quartil_resto(lista, quarto):
+    lista1 = []
+    for b in lista:
+        for c in quarto:
+            if b!=c:
+                lista1.append(b)
+    return lista1
+
+
 def main():
-    texto = input() #recebe o nome do arquivo
-    #stopwords = input().split() #lista com as stopwords
-    #L0 = listar_palavras_arquivo(texto)
-    #L0 = tirar_stopwords(L0, stopwords)
-    #L0 = editar_L0(L0)
-    #palavras_freq = contar_frequencia(L0)
-    #palavras_freq = ordenar_freq_decresc(palavras_freq)
-    #verquartil
-    print(L0)
+    texto = input() #recebe o nome do arquivo//// testes/texto1.in
+    stopwords = input().split() #lista com as stopwords //// a à ainda ao aos aqui as às assim cada clara claro com como da das de demais desta destes deve do dois dos e é em entanto entre estas existem geral já longo mais maneira melhor mesmo na não nas neste no nos nossa novas novo nunca o os ou outras outro para pela pelo pelos por qual quanto que se sempre seu sobre sua suas talvez todas todavia todo todos tudo um uma
+    L0 = listar_palavras_arquivo(texto)
+    L0 = tirar_stopwords(L0, stopwords)
+    L0 = editar_L0(L0)
+    palavras_freq = contar_frequencia(L0)
+    palavras_freq = ordenar_freq_decresc(palavras_freq)
+    lista = quartil_lista(palavras_freq)
+    print(' '.join(lista[0:3]))
+    (quarto, a) = quartil_palavras(lista)
+    print(a)
+    lista1 = quartil_resto(lista, quarto)
+    print(' '.join(lista1[0:3]))
 
 main()
 
