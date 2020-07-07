@@ -20,6 +20,8 @@ def tirar_stopwords(L0, stopwords): # recebe lista de stopwords da entrada, ver 
             for palavra1 in stopwords:
                 if palavra0 == palavra1:
                     L0.remove(palavra0)
+            if palavra0 == 'O' or palavra0 == 'Os' or palavra0 == 'A' or palavra0 == 'As' or palavra0 == 'Ao' or palavra0 == 'Aos' or palavra0 == 'Um' or palavra0 == 'Uma': #or palavra0 == 'Uns' or palavra0 == 'Umas':#palavra0 == 'Como' or palavra0 == 'Assim'
+                L0.remove(palavra0)
     return L0
 
 def editar_L0(L0):
@@ -31,7 +33,7 @@ def editar_L0(L0):
             L0[i] = L0[i][2:len(L0[i])]
         elif L0[i][len(L0[i])-2:len(L0[i])] == "''":
             L0[i] = L0[i][0:len(L0[i])-2]
-        elif L0[i][len(L0[i])-1] == ',' or L0[i][len(L0[i])-1] == '.':
+        elif L0[i][len(L0[i])-1] == ',' or L0[i][len(L0[i])-1] == '.' or L0[i][len(L0[i])-1] == ';' or L0[i][len(L0[i])-1] == '?' or L0[i][len(L0[i])-1] == ':':
             L0[i] = L0[i][0:len(L0[i])-1]
     return L0
 
@@ -59,6 +61,7 @@ def contar_frequencia(L0):
 def ordenar_freq_decresc(palavras_freq):
     """ordena nela as palavras da mais a menos freq  """
     n = len(palavras_freq)
+    palavras_freq.sort()
     for _ in range(n-1):
         for i in range(n-1):
             if palavras_freq[i+1][1] > palavras_freq[i][1]:
@@ -74,39 +77,44 @@ def quartil_lista(palavras_freq):
     lista = []
     for i in range(len(palavras_freq)):
         if palavras_freq[i][1] >= 5:
-            lista.append(palavras_freq[i][0])
-    return lista
+            lista.append(palavras_freq[i])
+    return lista#ok
 
 def quartil_palavras(lista):
     quarto = []
-    a = 0
     for i in range(len(lista)//4):
         quarto.append(lista[i])
-        a+=1
-    return quarto, a
+    a = 0
+    lista2 = []
+    lista4 = []
+    for j in range(len(lista)):
+        if lista[j][1] >= quarto[len(quarto)-1][1]:
+            a+=1
+            lista4.append(lista[j][0])
+        lista2.append(lista[j][0]) #tuplas em strings
+    return quarto, a, lista2, lista4
 
-def quartil_resto(lista, quarto):
+def quartil_resto(lista2, lista4):
     lista1 = []
-    for b in lista:
-        for c in quarto:
-            if b!=c:
-                lista1.append(b)
+    for b in lista2:
+        if b not in lista4:
+            lista1.append(b)
     return lista1
 
 
 def main():
-    texto = input() #recebe o nome do arquivo//// testes/texto1.in
+    texto = input() #recebe o nome do arquivo//// testes/texto0.in
     stopwords = input().split() #lista com as stopwords //// a à ainda ao aos aqui as às assim cada clara claro com como da das de demais desta destes deve do dois dos e é em entanto entre estas existem geral já longo mais maneira melhor mesmo na não nas neste no nos nossa novas novo nunca o os ou outras outro para pela pelo pelos por qual quanto que se sempre seu sobre sua suas talvez todas todavia todo todos tudo um uma
     L0 = listar_palavras_arquivo(texto)
-    L0 = tirar_stopwords(L0, stopwords)
     L0 = editar_L0(L0)
+    L0 = tirar_stopwords(L0, stopwords)
     palavras_freq = contar_frequencia(L0)
     palavras_freq = ordenar_freq_decresc(palavras_freq)
     lista = quartil_lista(palavras_freq)
-    print(' '.join(lista[0:3]))
-    (quarto, a) = quartil_palavras(lista)
+    (quarto, a, lista2, lista4) = quartil_palavras(lista)
+    print(' '.join(lista2[0:3]))
     print(a)
-    lista1 = quartil_resto(lista, quarto)
+    lista1 = quartil_resto(lista2, lista4)
     print(' '.join(lista1[0:3]))
 
 main()
