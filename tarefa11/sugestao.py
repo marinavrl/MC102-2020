@@ -1,0 +1,1 @@
+""" usar a contagem da frequencia.py para as freq e ver qual aparece mais depois das palavras sugeridas"""
