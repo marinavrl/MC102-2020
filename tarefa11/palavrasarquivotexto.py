@@ -1,8 +1,8 @@
 def listar_palavras_arquivo(texto):
-    with open(texto) as arquivo:
+    with open(texto, 'r', encoding='utf-8') as arquivo:
         L = []
         for line in arquivo:
-            Ls = line.strip().split()
+            Ls = line.strip().lower().split()
             L.append(Ls)
     for a in L:
         if a == []:
@@ -14,7 +14,7 @@ def listar_palavras_arquivo(texto):
     return L0, L
 
 def main():
-    texto = "testes/texto0.in"
+    texto = "testes/texto2.in"
     L0, L = listar_palavras_arquivo(texto)
     print(L0)
 
