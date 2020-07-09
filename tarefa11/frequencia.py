@@ -1,16 +1,13 @@
 def listar_palavras_arquivo(texto):
     with open(texto, 'r', encoding='utf-8') as arquivo:
-        L = []
+        tirar_pontos = ''
+        L = ''
         for line in arquivo:
-            Ls = line.strip().lower().split()
-            L.append(Ls)
-    for a in L:
-        if a == []:
-            L.remove(a)
-    L0 = []
-    for i in range(len(L)):
-        for b in L[i]:
-            L0.append(b)
+            L = line.strip().lower() + " "
+            for letra in L:
+                if not (ord(letra) in range(46,65) or (ord(letra) in range(33,45))):
+                    tirar_pontos+=letra
+            L0 = tirar_pontos.split()
     return L0
 
 def tirar_stopwords(L0, stopwords):
@@ -18,22 +15,6 @@ def tirar_stopwords(L0, stopwords):
         for palavra0 in L0:
             if palavra0 in stopwords:
                 L0.remove(palavra0)
-    return L0
-
-def editar_L0(L0):
-    for i in range(len(L0)):
-        if L0[i][0:2] == "''" and L0[i][len(L0[i])-2:len(L0[i])] == "''":
-            L0[i] = L0[i][2:len(L0[i])-2]
-        elif L0[i][0] == "(":
-            L0[i] = L0[i][1:len(L0[i])]
-        elif L0[i][0:2] == "''":
-            L0[i] = L0[i][2:len(L0[i])]
-        elif L0[i][len(L0[i])-2:len(L0[i])] == "''":
-            L0[i] = L0[i][0:len(L0[i])-2]
-        elif L0[i][len(L0[i])-3:len(L0[i])] == "''.":
-            L0[i] = L0[i][0:len(L0[i])-3]
-        elif L0[i][len(L0[i])-1] == ',' or L0[i][len(L0[i])-1] == '.' or L0[i][len(L0[i])-1] == ';' or L0[i][len(L0[i])-1] == '?' or L0[i][len(L0[i])-1] == ':' or L0[i][len(L0[i])-1] == "'" or L0[i][len(L0[i])-1] == ")":
-            L0[i] = L0[i][0:len(L0[i])-1]
     return L0
 
 def contar_frequencia(L0):
@@ -100,7 +81,6 @@ def main():
     texto = input()
     stopwords = input().split()
     L0 = listar_palavras_arquivo(texto)
-    L0 = editar_L0(L0)
     L0 = tirar_stopwords(L0, stopwords)
     palavras_freq = contar_frequencia(L0)
     palavras_freq = ordenar_freq_decresc(palavras_freq)
