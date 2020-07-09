@@ -9,7 +9,7 @@ def ordenar_freq_decresc(palavras_freq):
     palavras_freq.sort()
     for _ in range(n-1):
         for i in range(n-1):
-            if palavras_freq[i+1][1] > palavras_freq[i][1]:
+            if palavras_freq[i+1][1] > palavras_freq[i][1]: 
                 aux = palavras_freq[i]
                 palavras_freq[i] = palavras_freq[i+1]
                 palavras_freq[i+1] = aux

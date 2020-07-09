@@ -1,4 +1,4 @@
-def listar_palavras_arquivo(texto, stopwords):
+def listar_palavras_arquivo(texto):
     with open(texto, 'r', encoding='utf-8') as arquivo:
         tirar_pontos = ''
         L = ''
@@ -8,6 +8,9 @@ def listar_palavras_arquivo(texto, stopwords):
                 if not (ord(letra) in range(46,65) or (ord(letra) in range(33,45))):
                     tirar_pontos+=letra
             L0 = tirar_pontos.split()
+    return L0
+
+def tirar_stopwords(L0, stopwords):
     for _ in L0:
         for palavra0 in L0:
             if palavra0 in stopwords:
@@ -30,6 +33,9 @@ def contar_frequencia(L0):
             continue
         else:
             palavras_freq.append(tupla)
+    return palavras_freq 
+
+def ordenar_freq_decresc(palavras_freq):
     n = len(palavras_freq)
     palavras_freq.sort()
     for _ in range(n-1):
@@ -47,6 +53,9 @@ def quartil_lista(palavras_freq):
     for i in range(len(palavras_freq)):
         if palavras_freq[i][1] >= 5:
             lista.append(palavras_freq[i])
+    return lista
+
+def quartil_palavras(lista):
     quarto = []
     for i in range(len(lista)//4):
         quarto.append(lista[i])
@@ -58,21 +67,28 @@ def quartil_lista(palavras_freq):
             a+=1
             lista4.append(lista[j][0])
         lista2.append(lista[j][0])
+    return quarto, a, lista2, lista4
+
+def quartil_resto(lista2, lista4):
     lista1 = []
     for b in lista2:
         if b not in lista4:
             lista1.append(b)
-    return lista1, lista2, a
+    return lista1
 
 
 def main():
     texto = input()
     stopwords = input().split()
-    L0 = listar_palavras_arquivo(texto, stopwords)
+    L0 = listar_palavras_arquivo(texto)
+    L0 = tirar_stopwords(L0, stopwords)
     palavras_freq = contar_frequencia(L0)
-    lista1, lista2, a = quartil_lista(palavras_freq)
+    palavras_freq = ordenar_freq_decresc(palavras_freq)
+    lista = quartil_lista(palavras_freq)
+    (quarto, a, lista2, lista4) = quartil_palavras(lista)
     print(' '.join(lista2[0:3]))
     print(a)
+    lista1 = quartil_resto(lista2, lista4)
     print(' '.join(lista1[0:3]))
 
 main()
