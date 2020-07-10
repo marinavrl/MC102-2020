@@ -1,4 +1,4 @@
-def listar_palavras_arquivo(texto, stopwords):
+def listar_palavras_arquivo(texto):#stopwords
     with open(texto, 'r', encoding='utf-8') as arquivo:
         tirar_pontos = ''
         L = ''
@@ -8,36 +8,22 @@ def listar_palavras_arquivo(texto, stopwords):
                 if not (ord(letra) in range(46,65) or (ord(letra) in range(33,45))):
                     tirar_pontos+=letra
             L0 = tirar_pontos.split()
-    for _ in L0:
-        for palavra0 in L0:
-            if palavra0 in stopwords:
-                L0.remove(palavra0)
+    #for _ in L0:
+     #   for palavra0 in L0:
+      #      if palavra0 in stopwords:
+       #         L0.remove(palavra0)
     return L0
 
-def contar_frequencia(L0):
+def contar_frequencia(L0, stopwords): #count
     palavras_freq = []
-    for i in range(len(L0)):
-        a = 0
-        for j in range(len(L0)):
-            if L0[i] == L0[j]:
-                a+=1
-                palavra = L0[i]
-            else:
-                continue
-        freq = a
-        tupla = (palavra, freq)
-        if tupla in palavras_freq:
-            continue
-        else:
-            palavras_freq.append(tupla)
-    n = len(palavras_freq)
+    for palavra in L0:
+        if palavra not in stopwords:
+            freq = L0.count(palavra)
+            tupla = (palavra, freq)
+            if tupla not in palavras_freq:
+                palavras_freq.append(tupla)
     palavras_freq.sort()
-    for _ in range(n-1):
-        for i in range(n-1):
-            if palavras_freq[i+1][1] > palavras_freq[i][1]:
-                aux = palavras_freq[i]
-                palavras_freq[i] = palavras_freq[i+1]
-                palavras_freq[i+1] = aux
+    palavras_freq.sort(key=lambda val: val[1], reverse=True)
     return palavras_freq
 
 def quartil_lista(palavras_freq):
@@ -68,8 +54,8 @@ def quartil_lista(palavras_freq):
 def main():
     texto = input()
     stopwords = input().split()
-    L0 = listar_palavras_arquivo(texto, stopwords)
-    palavras_freq = contar_frequencia(L0)
+    L0 = listar_palavras_arquivo(texto)
+    palavras_freq = contar_frequencia(L0, stopwords)
     lista1, lista2, a = quartil_lista(palavras_freq)
     print(' '.join(lista2[0:3]))
     print(a)

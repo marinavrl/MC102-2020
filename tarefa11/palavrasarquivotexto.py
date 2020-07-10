@@ -1,21 +1,23 @@
-def listar_palavras_arquivo(texto):
+def listar_palavras_arquivo(texto, stopwords):
     with open(texto, 'r', encoding='utf-8') as arquivo:
-        L = []
+        tirar_pontos = ''
+        L = ''
         for line in arquivo:
-            Ls = line.strip().lower().split()
-            L.append(Ls)
-    for a in L:
-        if a == []:
-            L.remove(a)
-    L0 = []
-    for i in range(len(L)):
-        for b in L[i]:
-            L0.append(b)
-    return L0, L
+            L = line.strip().lower() + " "
+            for letra in L:
+                if not (ord(letra) in range(46,65) or (ord(letra) in range(33,45))):
+                    tirar_pontos+=letra
+            L0 = tirar_pontos.split()
+    for _ in L0:
+        for palavra0 in L0:
+            if palavra0 in stopwords:
+                L0.remove(palavra0)
+    return L0
 
 def main():
-    texto = "testes/texto2.in"
-    L0, L = listar_palavras_arquivo(texto)
+    texto = "testes/texto4.in"
+    stopwords = input().split() #a à ainda ao aos aqui as às assim cada clara claro com como da das de demais desta destes deve do dois dos e é em entanto entre estas existem geral já longo mais maneira melhor mesmo na não nas neste no nos nossa novas novo nunca o os ou outras outro para pela pelo pelos por qual quanto que se sempre seu sobre sua suas talvez todas todavia todo todos tudo um uma
+    L0 = listar_palavras_arquivo(texto, stopwords)
     print(L0)
 
 main()
