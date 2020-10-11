@@ -7,8 +7,6 @@
 
 # Leitura de dados
 
-"""A entrada do seu programa será composta por uma única linha,
-contendo um valor real, representando o salário bruto."""
 salario_bruto = float(input())
 
 # Desconto de INSS
@@ -25,8 +23,12 @@ elif 2089.60 < salario_bruto <= 3134.40:
     INSS = salario_bruto * 12.0/100
     salario_liquido0 = salario_bruto - INSS
 
-elif 3134.40 < salario_bruto:
+elif 3134.40 < salario_bruto <= 6101.06:
     INSS = salario_bruto * 14.0/100
+    salario_liquido0 = salario_bruto - INSS
+
+elif salario_bruto > 6101.06:
+    INSS = 6101.06 * 14.0/100
     salario_liquido0 = salario_bruto - INSS
 
 
@@ -59,8 +61,3 @@ print("Bruto: R$", format(salario_bruto, ".2f").replace(".", ","))
 print("INSS: R$", format(INSS, ".2f").replace(".", ","))
 print("IR: R$", format(IR, ".2f").replace(".", ","))
 print("Liquido: R$", format(salario_liquido, ".2f").replace(".", ","))
-
-"""Bruto: R$ <Salário bruto> #salario_bruto
-INSS: R$ <Desconto de INSS> #desconto_INSS
-IR: R$ <Desconto de IR> #
-Liquido: R$ <Salário líquido>"""
