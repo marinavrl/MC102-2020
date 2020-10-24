@@ -32,4 +32,21 @@ print("Sexto:", "{:02}".format(n6))
 # Processamento e impressão da lista de possíveis apostas
 
 print("Lista de apostas:")
-print("{:02} - {:02} - {:02} - {:02} - {:02} - {:02}".format(n1, n2, n3, n4, n5, n6))
+
+for a in range(n1 + 1, n3):
+    for b in range(n4 + 1, n6):
+        n2 = a
+        n5 = b
+        s = n1 + n2 + n3 + n4 + n5 + n6
+        if s % 7 == 0 or s % 13 == 0:
+            continue
+        if n1 % 2 == 0 and n2 % 2 == 0:
+            continue
+        elif n1 % 2 != 0 and n2 % 2 != 0:
+            continue
+        if n4 % 2 == 0 and n5 % 2 == 0:
+            continue
+        elif n4 % 2 != 0 and n5 % 2 != 0:
+            continue
+        else:
+            print("{:02} - {:02} - {:02} - {:02} - {:02} - {:02}".format(n1, n2, n3, n4, n5, n6))
