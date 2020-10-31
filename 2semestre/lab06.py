@@ -10,6 +10,12 @@ ações da empresa """
 
 # Leitura de dados
 
+"""O preço varia por dia, então, se você comprar
+num dia em que a ação está mais barata e vender
+quando estiver mais cara você obtém um lucro
+maior, lembrando do limite de tempo para
+vendê-las."""
+
 """Programa recebe um valor N (número de dias que 
 você tem registro do preço das ações); N <= 30 """
 
