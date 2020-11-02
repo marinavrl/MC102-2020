@@ -41,32 +41,48 @@ obtido."""
 
 N = int(input())
 
-if N <= 30:
-    lista_valores = [] #lista para armazenar os valores diários das ações
+lista_valores = [] #lista para armazenar os valores diários das ações
 
-    for _ in range(N):
-        valor_dia = float(input())
-        lista_valores.append(valor_dia)
-    
-    K = int(input())
+for _ in range(N):
+    valor_dia = float(input())
+    lista_valores.append(valor_dia)
 
-    Q = float(input())
+print(lista_valores)
+
+K = int(input())
+
+Q = float(input())
 
 #criar lista em ordem crescente de valores
 
-lista_ordenada = lista_valores.sort()
+lista_ordenada = sorted(lista_valores)
 
+print(lista_ordenada)
 
 # Escolha da melhor variação de valores da ação
 
 for a in lista_valores:
-    
-    if a == lista_ordenada[N-1]:
+    b = lista_ordenada[N-1]
+    if a == b:
         valor_venda = a
-    
+        i = lista_valores.index(a)
+        dia_venda = i + 1
+        
 
+if valor_venda != lista_valores[0]: #escolhendo valor compra
+    lista_possiveis = lista_valores[i-K:i+1].sort()
+    valor_compra = lista_possiveis[0]
 
+else:
+    valor_compra = valor_venda
 
+dia_compra = lista_valores.index(valor_compra) + 1
+
+qtde_acoes = int(Q // valor_compra)
+
+lucro = qtde_acoes * (valor_venda - valor_compra)
+
+"lucro = obtido - custo"
 
 # Saída de dados
 
@@ -76,5 +92,3 @@ print('Dia da venda:', dia_venda)
 print('Valor de venda: R$', format(valor_venda, '.2f').replace('.', ','))
 print('Quantidade de acoes compradas:', qtde_acoes)
 print('Lucro: R$', format(lucro, '.2f').replace('.', ','))
-
-"""lucro = obtido - custo """
