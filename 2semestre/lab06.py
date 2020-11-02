@@ -39,8 +39,31 @@ cada ação,  o dia e o valor de venda de cada ação,
 a quantidade de ações compradas, e o lucro total
 obtido."""
 
+N = int(input())
+
+if N <= 30:
+    lista_valores = [] #lista para armazenar os valores diários das ações
+
+    for _ in range(N):
+        valor_dia = float(input())
+        lista_valores.append(valor_dia)
+    
+    K = int(input())
+
+    Q = float(input())
+
+#criar lista em ordem crescente de valores
+
+lista_ordenada = lista_valores.sort()
+
 
 # Escolha da melhor variação de valores da ação
+
+for a in lista_valores:
+    
+    if a == lista_ordenada[N-1]:
+        valor_venda = a
+    
 
 
 
@@ -53,3 +76,5 @@ print('Dia da venda:', dia_venda)
 print('Valor de venda: R$', format(valor_venda, '.2f').replace('.', ','))
 print('Quantidade de acoes compradas:', qtde_acoes)
 print('Lucro: R$', format(lucro, '.2f').replace('.', ','))
+
+"""lucro = obtido - custo """
