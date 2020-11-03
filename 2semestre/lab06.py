@@ -12,42 +12,39 @@ ações da empresa """
 
 N = int(input())
 
-lista_valores = [] #lista para armazenar os valores diários das ações
+lista_compra = [] #lista para armazenar os valores diários das ações
 
 for _ in range(N):
     valor_dia = float(input())
-    lista_valores.append(valor_dia)
+    lista_compra.append(valor_dia)
+
+lista_venda = lista_compra
 
 K = int(input())
 
 Q = float(input())
 
-#criar lista em ordem crescente de valores
-
-lista_ordenada = sorted(lista_valores)
-
 # Escolha da melhor variação de valores da ação
 
-for a in lista_valores:
-    b = lista_ordenada[N-1]
-    if a == b:
-        valor_venda = a
-        i = lista_valores.index(a)
-        dia_venda = i + 1
-        
+lucro_maximo = 0
 
-if valor_venda != lista_valores[0]: #escolhendo valor compra
-    lista_possiveis = sorted(lista_valores[i-K:i+1])
-    valor_compra = lista_possiveis[0]
+qtde_acoes = 0
 
-else:
-    valor_compra = valor_venda
+for a in lista_compra:
+    qtde_acoes0 = int(Q//a)
+    if qtde_acoes0 > qtde_acoes:
+        qtde_acoes = qtde_acoes0
+    for b in lista_venda:
+        if lista_venda.index(b) <= lista_compra.index(a) + K:
+            lucro_maximo0 = qtde_acoes * (b - a)
+            if lucro_maximo0 > lucro_maximo:
+                lucro_maximo = lucro_maximo0
+                valor_compra = a
+                valor_venda = b
+                dia_compra = lista_compra.index(a) + 1
+                dia_venda = lista_venda.index(b) + 1
 
-dia_compra = lista_valores.index(valor_compra) + 1
-
-qtde_acoes = int(Q // valor_compra)
-
-lucro = qtde_acoes * (valor_venda - valor_compra)
+lucro = lucro_maximo
 
 # Saída de dados
 

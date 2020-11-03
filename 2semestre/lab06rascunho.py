@@ -29,22 +29,27 @@ Q = float(input())
 
 # Escolha da melhor variação de valores da ação
 
+"""esqueceu do K""""
+
+lucro_maximo = 0
+
+qtde_acoes = 0
+
 for a in lista_compra:
+    qtde_acoes0 = int(Q//a)
+    if qtde_acoes0 > qtde_acoes:
+        qtde_acoes = qtde_acoes0
     for b in lista_venda:
-        
+        if lista_venda.index(b) <= lista_compra.index(a) + K:
+            lucro_maximo0 = qtde_acoes * (b - a)
+            if lucro_maximo0 > lucro_maximo:
+                lucro_maximo = lucro_maximo0
+                valor_compra = a
+                valor_venda = b
+                dia_compra = lista_compra.index(a) + 1
+                dia_venda = lista_venda.index(b) + 1
 
-if valor_venda != lista_valores[0]: #escolhendo valor compra
-    lista_possiveis = sorted(lista_valores[i-K:i+1])
-    valor_compra = lista_possiveis[0]
-
-else:
-    valor_compra = valor_venda
-
-dia_compra = lista_valores.index(valor_compra) + 1
-
-qtde_acoes = int(Q // valor_compra)
-
-lucro = qtde_acoes * (valor_venda - valor_compra)
+lucro = lucro_maximo
 
 # Saída de dados
 
