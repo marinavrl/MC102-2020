@@ -27,18 +27,10 @@ K = int(input())
 
 Q = float(input())
 
-#criar lista em ordem crescente de valores
-
-lista_ordenada = sorted(lista_valores)
-
 # Escolha da melhor variação de valores da ação
 
-for a in lista_valores:
-    b = lista_ordenada[N-1]
-    if a == b:
-        valor_venda = a
-        i = lista_valores.index(a)
-        dia_venda = i + 1
+for a in lista_compra:
+    for b in lista_venda:
         
 
 if valor_venda != lista_valores[0]: #escolhendo valor compra
