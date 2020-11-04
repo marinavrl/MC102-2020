@@ -11,6 +11,8 @@ vendido), armazenar a variação de lucro máximo e ir mudando
 essa variavel a cada laco, se for maior do que o valor
 anterior"""
 
+from copy import deepcopy
+
 # Leitura de dados
 
 N = int(input())
@@ -21,7 +23,7 @@ for _ in range(N):
     valor_dia = float(input())
     lista_compra.append(valor_dia)
 
-lista_venda = lista_compra
+lista_venda = deepcopy(lista_compra)
 
 K = int(input())
 
@@ -32,6 +34,14 @@ Q = float(input())
 lucro_maximo = 0
 
 qtde_acoes1 = 0
+
+valor_compra = lista_compra[0]
+
+valor_venda = lista_venda[0]
+
+dia_compra = 1
+
+dia_venda = 1
 
 for a in lista_compra:
     qtde_acoes0 = int(Q//a)
@@ -49,7 +59,7 @@ for a in lista_compra:
                 qtde_acoes1 = int(Q//valor_compra)
                 lucro_maximo = qtde_acoes1 * (valor_venda - valor_compra)
 
-lucro = lucro_maximo
+lucro = float(lucro_maximo)
 qtde_acoes = int(Q//valor_compra)
 
 # Saída de dados

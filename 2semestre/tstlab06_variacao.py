@@ -1,14 +1,26 @@
-lista_compra = [12.55, 13.32, 15.13, 15.65, 16.37, 20.90, 15.21, 13.88, 11.45, 10.50]
+from copy import deepcopy
 
-lista_venda = [12.55, 13.32, 15.13, 15.65, 16.37, 20.90, 15.21, 13.88, 11.45, 10.50]
+lista_compra = [15.06, 34.83, 38.97, 20.58, 19.97, 29.70, 33.71, 39.49, 29.96, 22.94, 22.99, 28.82, 24.23, 39.75, 21.07, 39.44, 29.53, 31.84, 24.59, 39.41, 37.72, 34.67, 30.11, 21.00, 19.87, 23.35, 36.82, 35.07, 28.65, 15.92]
 
-Q = 5000.00
+"""lista_venda = [15.06, 34.83, 38.97, 20.58, 19.97, 9.70, 33.71, 39.49, 29.96, 22.94, 22.99, 28.82, 24.23, 39.75, 21.07, 39.44, 29.53, 31.84, 24.59, 39.41, 37.72, 34.67, 30.11, 21.00, 19.87, 23.35, 36.82, 35.07, 28.65, 15.92]"""
 
-K = 2
+lista_venda = deepcopy(lista_compra)
+
+Q = 50000.00
+
+K = 10
 
 lucro_maximo = 0
 
 qtde_acoes1 = 0
+
+valor_compra = lista_compra[0]
+
+valor_venda = lista_venda[0]
+
+dia_compra = 1
+
+dia_venda = 1
 
 for a in lista_compra:
     qtde_acoes0 = int(Q//a)
@@ -29,10 +41,13 @@ for a in lista_compra:
 
 print(valor_compra, valor_venda)
 print(dia_compra, dia_venda)
-lucro = lucro_maximo
+lucro = float(lucro_maximo)
 print(lucro)
 qtde_acoes = int(Q//valor_compra)
 print(qtde_acoes)
+
+"""from copy import deepcopy
+lista_venda = deepcopy(lista_compra) """
 
 
         
