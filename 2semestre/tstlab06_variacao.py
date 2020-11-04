@@ -12,7 +12,7 @@ qtde_acoes1 = 0
 
 for a in lista_compra:
     qtde_acoes0 = int(Q//a)
-    if qtde_acoes0 > qtde_acoes1: #continua aqui e vai até o ultimo laco
+    if qtde_acoes0 > qtde_acoes1:
         qtde_acoes1 = qtde_acoes0
     for b in lista_venda:
         if lista_compra.index(a) <= lista_venda.index(b) <= lista_compra.index(a) + K:
@@ -24,12 +24,13 @@ for a in lista_compra:
                 dia_compra = lista_compra.index(a) + 1
                 dia_venda = lista_venda.index(b) + 1
                 qtde_acoes1 = int(Q//valor_compra)
-                print(qtde_acoes1)
+                """print(qtde_acoes1)"""
                 lucro_maximo = qtde_acoes1 * (valor_venda - valor_compra)
 
 print(valor_compra, valor_venda)
 print(dia_compra, dia_venda)
-print(lucro_maximo)
+lucro = lucro_maximo
+print(lucro)
 qtde_acoes = int(Q//valor_compra)
 print(qtde_acoes)
 
