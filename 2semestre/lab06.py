@@ -40,21 +40,25 @@ dia_compra = 1
 
 dia_venda = 1
 
-for a in lista_compra:
-    qtde_acoes0 = int(Q//a)
-    if qtde_acoes0 > qtde_acoes1:
-        qtde_acoes1 = qtde_acoes0
-    for b in lista_venda:
-        if lista_compra.index(a) <= lista_venda.index(b) <= lista_compra.index(a) + K:
-            lucro_maximo0 = qtde_acoes1 * (b - a)
+#for a in lista_compra:
+for i in range(N):
+    a = lista_compra[i]
+    #if qtde_acoes0 > qtde_acoes1:
+        #qtde_acoes1 = qtde_acoes0
+#    for b in lista_venda:
+    for j in range(i+1, i+K+1):
+        #if lista_compra.index(a) <= lista_venda.index(b) <= lista_compra.index(a) + K:
+        if j <= N-1:
+            b = lista_compra[j]
+            qtde_acoes0 = int(Q//a)
+            lucro_maximo0 = qtde_acoes0 * (b - a)
             if lucro_maximo0 > lucro_maximo:
-                lucro_maximo = lucro_maximo0
                 valor_compra = a
                 valor_venda = b
-                dia_compra = lista_compra.index(a) + 1
-                dia_venda = lista_venda.index(b) + 1
-                qtde_acoes1 = int(Q//valor_compra)
-                lucro_maximo = qtde_acoes1 * (valor_venda - valor_compra)
+                dia_compra = i+1
+                dia_venda = j+1
+                qtde_acoes1 = qtde_acoes0
+                lucro_maximo = lucro_maximo0
 
 lucro = float(lucro_maximo)
 qtde_acoes = int(Q//valor_compra)
