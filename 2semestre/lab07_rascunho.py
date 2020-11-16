@@ -10,13 +10,10 @@ for _ in range(N):
     tupla = tupla + tuple([nota])
     lista.append(tupla)
 
-print(lista)
-
 for j in range(len(lista)):
     peso = int(input())
     lista[j] = lista[j] + tuple([peso])
-
-print(lista)
+    lista[j] = lista[j] + tuple([j + 1])
 
 # Cálculo da média ponderada dos laboratórios
 
@@ -30,11 +27,11 @@ for i in range(len(lista)):
 
 media = soma_ponderada/soma_pesos
 
-print(media)
-
 # Verificação da situação do aluno
 
 if media >= 5.0 or media < 2.5:
+
+    print("Media laboratorios:", format(media, ".1f").replace(".", ","))
     
     nota_final = media
     
@@ -47,9 +44,6 @@ if media >= 5.0 or media < 2.5:
         print("Nota final:", format(nota_final, ".1f").replace(".", ","))
 
 elif media >= 2.5 and media < 5.0:
-
-#recebe a lista dos labs que irão compor o exame
-
     M = int(input())
 
     lista1 = []
@@ -59,11 +53,34 @@ elif media >= 2.5 and media < 5.0:
         lab = int(input())
         tupla1 = tupla1 + tuple([lab])
         lista1.append(tupla1)
+    for i in range(len(lista1)):
+        nota_lab = float(input())
+        lista1[i] = lista1[i] + tuple([nota_lab])
 
-#recebe as notas do aluno em cada lab
+    for i in range(len(lista1)):
+        for j in range(len(lista)):
+            if lista1[i][0] == lista[j][2]:
+                lista1[i] = lista1[i] + tuple([lista[j][1]])
 
-        nota_final = min{5, (media + media_exame) / 2}
-    if nota_final >= 5.0:
-        aluno aprovado
+    print("Media laboratorios:", format(media, ".1f").replace(".", ","))
+
+    #calcular a media_exame
+
+    soma_ponderada1 = 0
+
+    soma_pesos1 = 0
+
+    for i in range(len(lista1)):
+        soma_ponderada1 += lista1[i][1]*lista1[i][2]
+        soma_pesos1 += lista1[i][2]
+
+    media_exame = soma_ponderada1/soma_pesos1
+
+    nota_final = float(min(5, (media + media_exame) / 2))
+
+    if nota_final == 5.0:
+        print("Situacao: Aprovado no exame")
     else:
-        aluno reprovado"""
+        print("Situacao: Reprovado no exame")
+
+    print("Nota final:", format(nota_final, ".1f").replace(".", ","))

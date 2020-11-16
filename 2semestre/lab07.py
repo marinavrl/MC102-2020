@@ -33,34 +33,62 @@ for i in range(len(lista)):
 
 media = soma_ponderada/soma_pesos
 
-print("Media laboratorios:", format(media, ".1f").replace(".", ","))
-
 # Verificação da situação do aluno
 
+if media >= 5.0 or media < 2.5:
 
-
-# Caso o aluno tenha sido aprovado por nota
-print("Situacao: Aprovado por nota")
-
-# Caso o aluno tenha sido reprovado por nota
-print("Situacao: Reprovado por nota")
-
-
-
+    print("Media laboratorios:", format(media, ".1f").replace(".", ","))
+    
+    nota_final = media
+    
+    if nota_final < 2.5:
+        print("Situacao: Reprovado por nota")
+        print("Nota final:", format(nota_final, ".1f").replace(".", ","))
+    
+    elif nota_final >= 5.0:
+        print("Situacao: Aprovado por nota")
+        print("Nota final:", format(nota_final, ".1f").replace(".", ","))
 
 # Cálculo da nota do exame, caso o aluno tenha ido para o exame
 
-# Caso o aluno tenha sido aprovado no exame
-print("Situacao: Aprovado no exame")
+elif media >= 2.5 and media < 5.0:
+    M = int(input())
 
-# Caso o aluno tenha sido repravado no exame
-print("Situacao: Reprovado no exame")
+    lista1 = []
 
+    for _ in range(M):
+        tupla1 = ()
+        lab = int(input())
+        tupla1 = tupla1 + tuple([lab])
+        lista1.append(tupla1)
+    for i in range(len(lista1)):
+        nota_lab = float(input())
+        lista1[i] = lista1[i] + tuple([nota_lab])
 
+    for i in range(len(lista1)):
+        for j in range(len(lista)):
+            if lista1[i][0] == lista[j][2]:
+                lista1[i] = lista1[i] + tuple([lista[j][1]])
 
+    print("Media laboratorios:", format(media, ".1f").replace(".", ","))
 
+    # Calcular a media_exame
 
+    soma_ponderada1 = 0
 
-# Saída de dados
+    soma_pesos1 = 0
 
-print("Nota final:", format(nota_final, ".1f").replace(".", ","))
+    for i in range(len(lista1)):
+        soma_ponderada1 += lista1[i][1]*lista1[i][2]
+        soma_pesos1 += lista1[i][2]
+
+    media_exame = soma_ponderada1/soma_pesos1
+
+    nota_final = float(min(5, (media + media_exame) / 2))
+
+    if nota_final == 5.0:
+        print("Situacao: Aprovado no exame")
+    else:
+        print("Situacao: Reprovado no exame")
+
+    print("Nota final:", format(nota_final, ".1f").replace(".", ","))
