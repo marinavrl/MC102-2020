@@ -20,6 +20,7 @@ for _ in range(N):
 for j in range(len(lista)):
     peso = int(input())
     lista[j] = lista[j] + tuple([peso])
+    lista[j] = lista[j] + tuple([j + 1])
 
 # Cálculo da média ponderada dos laboratórios
 
