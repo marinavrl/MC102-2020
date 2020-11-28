@@ -29,6 +29,8 @@ for _ in range(L): #recebe as L linhas
     linhas += linha #devolve a lista arrumada com as palavras repetidas
 
 print(linhas)
+"""linhas = ['teus', 'olhos', 'sao', 'meus', 'livros', 'que', 'livro', 'ha', 
+'ai', 'melhor', 'em', 'que', 'melhor', 'se', 'leia', 'a', 'pagina', 'do', 'amor'] """
 
 N = int(input()) # recebe a quantidade de palavras desejadas
 
@@ -36,12 +38,31 @@ busca = []
 
 for _ in range(N):
     palavra = input()
-    palavra = palavra.lower()
     busca.append(palavra)
 
 print(busca)
 
-"""ocorrencia = 0"""
+for palavra in busca: # percorre a lista busca
+    palavra0 = palavra.lower()
+    k = len(palavra0)
+    ocorrencia = 0
+    similares = 0
+    for buscada in linhas:
+        if buscada == palavra0:
+            ocorrencia += 1
+        elif buscada != palavra0:
+            #for i in range(len(buscada)):
+            if buscada[0:k] == palavra0 or buscada[0:k-1] == palavra0:
+                similares += 1
+
+    print("Palavra buscada:", palavra)
+    print("Ocorrencia:", ocorrencia)
+    print("Palavras similares:", similares)
+
+
+
+
+
 
 """Como saída, seu programa deve fornecer, para cada palavra, 
 a quantidade de vezes que ela ocorre exatamente e a quantidade de
@@ -54,7 +75,7 @@ a quantidade de vezes que ela ocorre exatamente e a quantidade de
 #ver como fazer a lista de tuplas aos poucos
 
 
-for palavra in linhas:
+"""for palavra in linhas:"""
 
 
 """
