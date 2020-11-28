@@ -28,9 +28,31 @@ for _ in range(L): #recebe as L linhas
 
     linhas += linha #devolve a lista arrumada com as palavras repetidas
 
+print(linhas)
+
 N = int(input()) # recebe a quantidade de palavras desejadas
 
-ocorrencia = 0
+busca = []
+
+for _ in range(N):
+    palavra = input()
+    palavra = palavra.lower()
+    busca.append(palavra)
+
+print(busca)
+
+"""ocorrencia = 0"""
+
+"""Como saída, seu programa deve fornecer, para cada palavra, 
+a quantidade de vezes que ela ocorre exatamente e a quantidade de
+ palavras similares, mas não exatamente iguais."""
+
+#montar uma lista com as palavras buscadas (mantem a ordem
+# do input); devolver a saída de acordo com essa lista
+#usar um for para percorrer e imprimir de acordo
+#talvez seja bom uma lista de tuplas: (palavra, ocorrencia)
+#ver como fazer a lista de tuplas aos poucos
+
 
 for palavra in linhas:
 
