@@ -25,8 +25,6 @@ for _ in range(L):
 
     linhas += linha
 
-print(linhas)
-
 N = int(input())
 
 busca = []
@@ -34,8 +32,6 @@ busca = []
 for _ in range(N):
     palavra = input()
     busca.append(palavra)
-
-print(busca)
 
 for palavra in busca:
     palavra0 = palavra.lower()
