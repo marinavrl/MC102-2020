@@ -43,15 +43,23 @@ for palavra in busca:
     for buscada in linhas:
         if buscada == palavra0:
             ocorrencia += 1
-        elif buscada != palavra0:
+        elif buscada != palavra0 and len(buscada) >= k:
             if buscada[0:k] == palavra0:
                 similares += 1
-            elif k>2 and buscada[0:k] != palavra0:
-                if buscada[0:j] == palavra0[0:j]:
+            elif k == 2 and buscada[0:k] != palavra0:
+                for i in range(len(buscada)):
+                    if buscada[i:len(buscada)] == palavra0:
+                        similares += 1
+                    elif buscada[i:len(buscada)-1] == palavra0:
+                        similares += 1
+            elif k>=3 and buscada[0:k] != palavra0:
+                if buscada[0:j] == palavra0[0:j] and len(palavra0[0:j]) > 3:
                     similares += 1
                 elif buscada[0:j] != palavra0[0:j]:
                     for i in range(len(buscada)):
                         if buscada[i:] == palavra0:
+                            similares += 1
+                        elif buscada[i:len(buscada)-1] == palavra0:
                             similares += 1
 
 

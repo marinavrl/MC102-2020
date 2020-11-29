@@ -64,12 +64,14 @@ for palavra in busca: # percorre a lista busca
                         similares += 1
                     elif buscada[i:len(buscada)-1] == palavra0:
                         similares += 1
-            elif k>3 and buscada[0:k] != palavra0: #k>3 ou k >=3
-                if buscada[0:j] == palavra0[0:j]:
+            elif k>=3 and buscada[0:k] != palavra0: #k>3 ou k >=3
+                if buscada[0:j] == palavra0[0:j] and len(palavra0[0:j]) > 3: #len(palavra0[0:j]) != 3 para >3
                     similares += 1
                 elif buscada[0:j] != palavra0[0:j]:
                     for i in range(len(buscada)):
                         if buscada[i:] == palavra0: #tirei o i+k
+                            similares += 1
+                        elif buscada[i:len(buscada)-1] == palavra0: ####
                             similares += 1
 
 
