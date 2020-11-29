@@ -25,6 +25,7 @@ for _ in range(L):
 
     linhas += linha
 
+
 N = int(input())
 
 busca = []
@@ -43,8 +44,16 @@ for palavra in busca:
         if buscada == palavra0:
             ocorrencia += 1
         elif buscada != palavra0:
-            if buscada[0:k] == palavra0 or buscada[0:j] == palavra0[0:j]:
+            if buscada[0:k] == palavra0:
                 similares += 1
+            elif k>2 and buscada[0:k] != palavra0:
+                if buscada[0:j] == palavra0[0:j]:
+                    similares += 1
+                elif buscada[0:j] != palavra0[0:j]:
+                    for i in range(len(buscada)):
+                        if buscada[i:] == palavra0:
+                            similares += 1
+
 
     # Saída de dados
 

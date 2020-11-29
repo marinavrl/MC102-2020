@@ -1,0 +1,4 @@
+linhas = ['poema', 'de', 'sete', 'faces', 'mundo', 'mundo', 'vasto', 'mundo', 
+'se', 'eu', 'me', 'chamasse', 'raimundo', 'seria', 'uma', 'rima', 'nao', 'seria', 'uma', 
+'solucao', 'mundo', 'mundo', 'vasto', 'mundo', 'mais', 'vasto', 'e', 'meu', 'coracao', 
+'carlos', 'drummond', 'de', 'andrade']

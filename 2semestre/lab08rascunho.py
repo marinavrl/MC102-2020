@@ -29,8 +29,10 @@ for _ in range(L): #recebe as L linhas
     linhas += linha #devolve a lista arrumada com as palavras repetidas
 
 print(linhas)
-"""linhas = ['teus', 'olhos', 'sao', 'meus', 'livros', 'que', 'livro', 'ha', 
-'ai', 'melhor', 'em', 'que', 'melhor', 'se', 'leia', 'a', 'pagina', 'do', 'amor'] """
+"""linhas = ['poema', 'de', 'sete', 'faces', 'mundo', 'mundo', 'vasto', 'mundo', 
+'se', 'eu', 'me', 'chamasse', 'raimundo', 'seria', 'uma', 'rima', 'nao', 'seria', 'uma', 
+'solucao', 'mundo', 'mundo', 'vasto', 'mundo', 'mais', 'vasto', 'e', 'meu', 'coracao', 
+'carlos', 'drummond', 'de', 'andrade'] """
 
 N = int(input()) # recebe a quantidade de palavras desejadas
 
@@ -42,6 +44,7 @@ for _ in range(N):
 
 print(busca) #busca tem as palavras sem lower pra devolver
 #na configuracao certa
+"""busca = ['mundo', 'me']"""
 
 for palavra in busca: # percorre a lista busca
     palavra0 = palavra.lower() #deixa igual em linhas
@@ -52,15 +55,21 @@ for palavra in busca: # percorre a lista busca
     for buscada in linhas:
         if buscada == palavra0:
             ocorrencia += 1
-        elif buscada != palavra0:
-            if buscada[0:k] == palavra0: #or buscada[0:j] == palavra0[0:j]:
+        elif buscada != palavra0 and len(buscada) >= k: #len(buscada) >= k
+            if buscada[0:k] == palavra0:
                 similares += 1
-          #  elif k>2 and buscada[0:k] != palavra0:
+            elif k == 2 and buscada[0:k] != palavra0: ###
+                for i in range(len(buscada)):
+                    if buscada[i:len(buscada)] == palavra0: ##andar pra tras na string
+                        similares += 1
+                    elif buscada[i:len(buscada)-1] == palavra0:
+                        similares += 1
+            elif k>3 and buscada[0:k] != palavra0: #k>3 ou k >=3
                 if buscada[0:j] == palavra0[0:j]:
                     similares += 1
                 elif buscada[0:j] != palavra0[0:j]:
                     for i in range(len(buscada)):
-                        if buscada[i:k] == palavra0:
+                        if buscada[i:] == palavra0: #tirei o i+k
                             similares += 1
 
 
