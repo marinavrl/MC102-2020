@@ -25,7 +25,6 @@ for _ in range(L):
 
     linhas += linha
 
-
 N = int(input())
 
 busca = []
@@ -51,6 +50,8 @@ for palavra in busca:
                     if buscada[i:len(buscada)] == palavra0:
                         similares += 1
                     elif buscada[i:len(buscada)-1] == palavra0:
+                        similares += 1
+                    elif buscada[i:i+k] == palavra0:
                         similares += 1
             elif k>=3 and buscada[0:k] != palavra0:
                 if buscada[0:j] == palavra0[0:j] and len(palavra0[0:j]) > 3:
