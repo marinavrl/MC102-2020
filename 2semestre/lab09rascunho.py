@@ -2,11 +2,11 @@
 
 selecoes = []
 dic = {}
-for i in range(16):
+for i in range(2): #16
   selecao = input()
   selecoes.append(selecao)
-  dic[selecao] = {"partidas": 0,
-                  "vitorias": 0,
+  dic[selecao] = {"partidas": 0, #dicionario de duas dimensões
+                  "vitorias": 0, #um dicionario pra cada selecao
                   "derrotas": 0,
                   "penaltis": 0,
                   "normal": 0,
@@ -14,7 +14,9 @@ for i in range(16):
                   "sofridos": 0}
 
 # Leitura das partidas e processamento dos dados
-
+"""Seu programa receberá os resultados das 16 partidas 
+que ocorreram até o final da competição, também sendo um 
+resultado por linha"""
 
 
 # Saída de dados
