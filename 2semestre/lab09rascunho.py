@@ -44,7 +44,7 @@ for result in resultados:#contar a quantidade total de partidas etc
     if result[i] not in C:
       pais = result[i]
       dic[pais]["partidas"] += 1 #ok
-    elif result[i] in C: #partidas normais ou penaltis
+    elif result[i] in C: #contar partidas normais ou penaltis
         if i == 1:
           if result[4] in D:
             pais = result[0]
@@ -60,13 +60,10 @@ for result in resultados:#contar a quantidade total de partidas etc
             pais = result[4]
             dic[pais]["normal"] += 1
 
-"""elif result[i] in D: #partidas penaltis
-      if i == 4:
-        pais = result[0]
-        dic[pais]["penaltis"] += 1
-      elif i == 6:
-        pais = result[7]
-        dic[pais]["penaltis"] += 1"""
+for result in resultados: #identificar as vitorias
+  if len(result) == 5:
+    
+
 
 
 print(dic)
@@ -76,20 +73,8 @@ print(dic)
 #comparar com a chave correspondente no dic e somar
 #nos zeros
 
-"""Quando a partida é decidida durante o 
-tempo normal de jogo o formato do resultado é dado na 
-seguinte forma:
-
-<País 1> <Gols do país 1> x <Gols do país 2> <País 2> """
-
-"""Quando a partida é decidida nos pênaltis o formato
-do resultado é dado na seguinte forma:
-
-<País 1> <Gols do país 1> x <Gols do país 2> (<Pênaltis do país 1> x <Pênaltis do país 2>) <País 2> """
-
-"""
 # Saída de dados
-
+"""
 for selecao in selecoes:
   print("-" * 50)
   print("Pais:", selecao)
@@ -108,9 +93,9 @@ print("-" * 50) """
 """Como saída, para cada país, seguindo a ordem da lista:
 
 Nome do país.
-Quantidade de partidas disputadas.
-Quantidade de partidas decididas em tempo normal de jogo.
-Quantidade de partidas decicidas nos pênaltis.
+Quantidade de partidas disputadas.#
+Quantidade de partidas decididas em tempo normal de jogo.#
+Quantidade de partidas decicidas nos pênaltis.#
 Número de vitórias.
 Número de derrotas.
 Quantidade de gols marcados.
