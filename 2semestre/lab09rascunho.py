@@ -12,8 +12,8 @@ for i in range(16):
                   "normal": 0,
                   "marcados": 0,
                   "sofridos": 0}
-print(selecoes)
-print(dic)
+"""print(selecoes)
+print(dic)"""
 
 # Leitura das partidas e processamento dos dados
 ###Para cada resultado, fazer split da entrada
@@ -30,7 +30,7 @@ for i in range(16):
   resultado_split = resultado.split()
   resultados.append(resultado_split)
 
-print(resultados)
+"""print(resultados) """
 
 C = {"0", "(0", "0)", "1", "(1", "1)", "2", "(2", "2)",
  "3", "(3", "3)", "4", "(4", "4)", "5", "(5", "5)", "6", "(6", "6)", "7", "(7", "7)", 
@@ -61,20 +61,70 @@ for result in resultados:#contar a quantidade total de partidas etc
             dic[pais]["normal"] += 1
 
 for result in resultados: #identificar as vitorias
-  if len(result) == 5:
-    
+  if len(result) == 5: #passar para int
+    result1 = int(result[1])
+    result3 = int(result[3])
+    if result1 > result3:
+      pais = result[0]
+      dic[pais]["vitorias"] += 1
+    elif result1 < result3:
+      pais = result[4]
+      dic[pais]["vitorias"] += 1
+  elif len(result) == 8:
+    result14 = int(result[4][1])
+    result60 = int(result[6][0])
+    if result[4][1] > result[6][0]:
+      pais = result[0]
+      dic[pais]["vitorias"] += 1
+    elif result[4][1] < result[6][0]:
+      pais = result[7]
+      dic[pais]["vitorias"] += 1
 
+for result in resultados: #identificar as derrotas
+  if len(result) == 5: #passar para int
+    result1 = int(result[1])
+    result3 = int(result[3])
+    if result1 > result3:
+      pais = result[4]
+      dic[pais]["derrotas"] += 1
+    elif result1 < result3:
+      pais = result[0]
+      dic[pais]["derrotas"] += 1
+  elif len(result) == 8:
+    result14 = int(result[4][1])
+    result60 = int(result[6][0])
+    if result[4][1] > result[6][0]:
+      pais = result[7]
+      dic[pais]["derrotas"] += 1
+    elif result[4][1] < result[6][0]:
+      pais = result[0]
+      dic[pais]["derrotas"] += 1
 
+for result in resultados: #contar gols marcados e sofridos
+  if len(result) == 5: #passar para int
+    result1 = int(result[1])
+    result3 = int(result[3])
+    pais = result[0]
+    dic[pais]["marcados"] += result1
+    dic[pais]["sofridos"] += result3
+    pais = result[4]
+    dic[pais]["marcados"] += result3
+    dic[pais]["sofridos"] += result1
 
-print(dic)
+  elif len(result) == 8:
+    result1 = int(result[1])
+    result3 = int(result[3])
+    pais = result[0]
+    dic[pais]["marcados"] += result1
+    dic[pais]["sofridos"] += result3
+    pais = result[7]
+    dic[pais]["marcados"] += result3
+    dic[pais]["sofridos"] += result1
 
-
-#for pais in resultado_split:"""
-#comparar com a chave correspondente no dic e somar
-#nos zeros
+"""print(dic)"""
 
 # Saída de dados
-"""
+
 for selecao in selecoes:
   print("-" * 50)
   print("Pais:", selecao)
@@ -86,25 +136,10 @@ for selecao in selecoes:
   print("Gols marcados:", dic[selecao]["marcados"])
   print("Gols sofridos:", dic[selecao]["sofridos"])
 
+for selecao in selecoes:
+  if dic[selecao]["derrotas"] == 0:
+    campeao = selecao
+
 print("-" * 50)
 print("Pais campeao:", campeao)
-print("-" * 50) """
-
-"""Como saída, para cada país, seguindo a ordem da lista:
-
-Nome do país.
-Quantidade de partidas disputadas.#
-Quantidade de partidas decididas em tempo normal de jogo.#
-Quantidade de partidas decicidas nos pênaltis.#
-Número de vitórias.
-Número de derrotas.
-Quantidade de gols marcados.
-Quantidade de gols sofridos. """
-
-"""Note que os gols marcados e sofridos não devem 
-contabilizar aqueles marcados na decisão por pênaltis. """
-
-"""Por fim, seu programa deve exibir o país campeão 
-da Copa do Mundo de Futebol. Note que para ser 
-campeão da competição o país não pode ter nenhuma 
-derrota durante a etapa de "mata-mata". """
+print("-" * 50)
