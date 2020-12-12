@@ -41,7 +41,8 @@ for _ in range(N):
     palavra = input()
     palavras.append(palavra)
 
-print(palavras)
+print(palavras) #ok
+
 
 
 """print("-" * 40)
