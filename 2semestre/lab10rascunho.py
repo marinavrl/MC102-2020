@@ -20,18 +20,31 @@ que devem ser buscadas; e N palavras, uma por linha"""
 na main isso deve dar um for pra lista """
 
 matriz = []
+linha = input()
 
 while linha.isdigit() == False:
+    linha = linha.split()
+    matriz.append(linha)
     linha = input()
+    if linha.isdigit():
+        N = int(linha)
+        break
 
-# Dica: use linha.isdigit(), linha.split() e matriz.append()
-# para processar a entrada e armazenar a matriz de caracteeres
+print(matriz)
+print(N) #OK
 
 # Leitura e processamento das palavras
 
-"""fazer um for para a lista"""
+palavras = []
 
-print("-" * 40)
+for _ in range(N):
+    palavra = input()
+    palavras.append(palavra)
+
+print(palavras)
+
+
+"""print("-" * 40)
 print("Lista de Palavras")
 print("-" * 40)
 
@@ -42,4 +55,4 @@ print("-" * 40)
 # Impressão da matriz
 
 for linha in matriz:
-  print(" ".join(linha))
+  print(" ".join(linha))"""
