@@ -3,12 +3,6 @@ print("mEU tESte".upper())
 >>>MEU TESTE
  """
 
-"""def funcao():
-    if ...:
-        return True
-    elif ...:
-        return False """
-
 """  * Recebe uma grade de caracteres e uma lista de
 palavras
      * Deve contabilizar a ocorrencia de cada palavra
@@ -26,7 +20,9 @@ que devem ser buscadas; e N palavras, uma por linha"""
 na main isso deve dar um for pra lista """
 
 matriz = []
-linha = input()
+
+while linha.isdigit() == False:
+    linha = input()
 
 # Dica: use linha.isdigit(), linha.split() e matriz.append()
 # para processar a entrada e armazenar a matriz de caracteeres
